@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:weightSum="14"
+        android:background="@color/red"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="@dimen/_160sdp"
+            android:layout_height="@dimen/_160sdp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/round_border_onboarding"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/easy_to_use" />
+
+        <TextView
+            android:layout_weight="2"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_22sdp"
+            android:fontFamily="@font/constantia"
+            android:gravity="center"
+            android:text="HOW TO USE ME FOR RESELLING OR EARNING"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+        <TextView
+            android:layout_weight="0.6"
+            android:drawableLeft="@drawable/write_icon"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"
+            android:drawablePadding="@dimen/_10sdp"
+            android:fontFamily="@font/nanumgothicregular"
+            android:gravity="start"
+            android:text="Click and select image"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/write_icon"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"
+            android:drawablePadding="@dimen/_10sdp"
+            android:fontFamily="@font/nanumgothicregular"
+            android:gravity="start|bottom"
+            android:text="Share your social media platform or source on demand"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+        <TextView
+            android:layout_weight="0.6"
+            android:drawableLeft="@drawable/write_icon"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"
+            android:drawablePadding="@dimen/_10sdp"
+            android:fontFamily="@font/nanumgothicregular"
+            android:gravity="start"
+            android:text="Get direct order from your customer"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+        <TextView
+            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_weight="1.2"
+            android:drawableLeft="@drawable/write_icon"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"
+            android:drawablePadding="@dimen/_10sdp"
+            android:fontFamily="@font/nanumgothicregular"
+            android:gravity="start"
+            android:text="Add your margin and place your order to your customer address"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+        <TextView
+            android:layout_weight="1.2"
+            android:drawableLeft="@drawable/write_icon"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:drawablePadding="@dimen/_10sdp"
+            android:fontFamily="@font/nanumgothicregular"
+            android:gravity="start"
+            android:text="Earn commission and profit margin on every order"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+        <TextView
+            android:layout_weight="1.2"
+            android:drawableLeft="@drawable/write_icon"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"
+            android:drawablePadding="@dimen/_10sdp"
+            android:fontFamily="@font/nanumgothicregular"
+            android:gravity="start"
+            android:text="To learn more reach to our HELP section watch video"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

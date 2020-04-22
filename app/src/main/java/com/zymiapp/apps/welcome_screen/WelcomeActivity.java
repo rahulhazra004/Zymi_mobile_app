@@ -27,7 +27,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         mView= View.inflate(this, R.layout.activity_welcome, null);
         setContentView(mView);
         initView(mView);
-        //setAdapter();
+        setAdapter();
     }
 
     private void initView(View mView) {

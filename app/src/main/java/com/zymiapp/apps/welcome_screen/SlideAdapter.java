@@ -46,15 +46,15 @@ public class SlideAdapter extends PagerAdapter {
 
         switch (position) {
             case 0:
-              //  mView = View.inflate(mContext, R.layout.first_onboardind_layout, null);
+                mView = View.inflate(mContext, R.layout.first_onboardind_layout, null);
                 linearLayout.addView(mView);
                 break;
             case 1:
-               // mView = View.inflate(mContext, R.layout.second_onboardind_layout, null);
+                mView = View.inflate(mContext, R.layout.second_onboardind_layout, null);
                 linearLayout.addView(mView);
                 break;
             case 2:
-               // mView = View.inflate(mContext, R.layout.third_onboardind_layout, null);
+                mView = View.inflate(mContext, R.layout.third_onboardind_layout, null);
                 /*imageView=mView.findViewById(R.id.profile_image);
                 Glide.with(mContext).load(R.drawable.cashback).asBitmap().centerCrop().into(new BitmapImageViewTarget(imageView) {
                     @Override
@@ -74,13 +74,13 @@ public class SlideAdapter extends PagerAdapter {
                 linearLayout.addView(mView);
                 break;
             case 3:
-               // mView = View.inflate(mContext, R.layout.forth_onboarding_layout, null);
-              /*  mView.findViewById(R.id.btnContinue).setOnClickListener(new View.OnClickListener() {
+                mView = View.inflate(mContext, R.layout.forth_onboarding_layout, null);
+                mView.findViewById(R.id.btnContinue).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         mWelcomeActivity.skipAndContinue.performClick();
                     }
-                });*/
+                });
                 linearLayout.addView(mView);
                 break;
         }

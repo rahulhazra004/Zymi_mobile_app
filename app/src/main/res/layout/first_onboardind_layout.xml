@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@color/red"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:padding="@dimen/_20sdp"
+            android:background="@drawable/round_border_onboarding"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/profile_image"
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="@dimen/_180sdp"
+            android:src="@drawable/zymi_convence_key" />
+
+        <TextView
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_22sdp"
+            android:fontFamily="@font/constantia"
+            android:gravity="center"
+            android:text="ZYMI CONVENIENCE KEY"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:drawableLeft="@drawable/write_icon"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"
+            android:drawablePadding="@dimen/_10sdp"
+            android:fontFamily="@font/constantia"
+            android:gravity="start"
+            android:text="Secure payment"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:drawableLeft="@drawable/write_icon"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"
+            android:drawablePadding="@dimen/_10sdp"
+            android:fontFamily="@font/constantia"
+            android:gravity="start"
+            android:text="Safe Privacy"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:drawableLeft="@drawable/write_icon"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"
+            android:drawablePadding="@dimen/_10sdp"
+            android:fontFamily="@font/constantia"
+            android:gravity="start"
+            android:text="Secure Purchases"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:drawableLeft="@drawable/write_icon"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"
+            android:drawablePadding="@dimen/_10sdp"
+            android:fontFamily="@font/constantia"
+            android:gravity="start"
+            android:text="Trusted Seller"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:drawableLeft="@drawable/write_icon"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"
+            android:drawablePadding="@dimen/_10sdp"
+            android:fontFamily="@font/constantia"
+            android:gravity="start"
+            android:text="Hassle - exchange or return"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:drawableLeft="@drawable/write_icon"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"
+            android:drawablePadding="@dimen/_10sdp"
+            android:fontFamily="@font/constantia"
+            android:gravity="start"
+            android:text="Fast Delivery"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:drawableLeft="@drawable/write_icon"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"
+            android:drawablePadding="@dimen/_10sdp"
+            android:fontFamily="@font/constantia"
+            android:gravity="start"
+            android:text="Timely Margin Payment"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</RelativeLayout>
