@@ -17,9 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="InnerclassSeparator">
+        <activity android:name=".welcome_screen.WelcomeActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".Activities.SocialActivity"></activity>
         <activity
-            android:name=".Splash.Activity_Splash"
+            android:name=".Splash.SplashActivity"
             android:screenOrientation="portrait"
             tools:ignore="InnerclassSeparator">
             <intent-filter tools:ignore="GoogleAppIndexingWarning">
@@ -64,7 +66,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name=".Activities.Login_Actvity"
+            android:name=".Activities.LoginActivity"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />

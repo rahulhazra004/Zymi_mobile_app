@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -195,7 +194,7 @@ public class Verification extends AppCompatActivity {
 
                             if(status.equals("201")){
                                 Toast.makeText(Verification.this, "Welcome to ZyMi", Toast.LENGTH_SHORT).show();
-                                Login_Actvity.getInstance().finish();
+                                LoginActivity.getInstance().finish();
                                 session_manager.setLogin(true);
 
                                 Intent intent = new Intent(getApplicationContext(),Main_Handler_Activity.class);

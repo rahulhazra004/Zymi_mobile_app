@@ -9,7 +9,7 @@ android {
         config {
             keyAlias 'shiv'
             keyPassword 'shivam78'
-            storeFile file('D:/compan/app/fash.jks')
+           // storeFile file('D:/compan/app/fash.jks')
             storePassword 'shivam78'
         }
     }

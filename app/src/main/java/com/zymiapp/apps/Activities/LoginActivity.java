@@ -1,9 +1,7 @@
 package com.zymiapp.apps.Activities;
 
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -29,7 +27,6 @@ import com.zymiapp.apps.Session.Customer_Session;
 import com.zymiapp.apps.Session.Name_Session;
 import com.zymiapp.apps.Session.Phone_Session;
 import com.zymiapp.apps.Session.Session_Manager;
-import com.zymiapp.apps.ViewPager.CustomViewPager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,7 +41,7 @@ import java.util.TimerTask;
 
 import me.relex.circleindicator.CircleIndicator;
 
-public class Login_Actvity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private static final String LOGIN_URL = "https://www.resellingapp.com/apiv2/zymi/rest_server/userRegistration/API-KEY/123456";
     private static final String KEY_NAME = "c_name";
@@ -57,7 +54,7 @@ public class Login_Actvity extends AppCompatActivity {
     private EditText email;
     private Customer_Session customer_session;
     private Session_Manager session_manager;
-    static Login_Actvity activity;
+    static LoginActivity activity;
     private Phone_Session phone_session;
     private Name_Session name_session;
     private TextView splsh_text;
@@ -112,7 +109,7 @@ public class Login_Actvity extends AppCompatActivity {
                 }else */
               if (password_.isEmpty()){
                     password.setError("Mobile number mandatory");
-                    Toast.makeText(Login_Actvity.this, "Mobile number mandatory", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Mobile number mandatory", Toast.LENGTH_SHORT).show();
                 }else{
                     showProgressDialog();
                     login();
@@ -238,12 +235,12 @@ public class Login_Actvity extends AppCompatActivity {
 
                             }else {
                                 hideProgressDialog();
-                                Toast.makeText(Login_Actvity.this, "Connection Error", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Connection Error", Toast.LENGTH_SHORT).show();
                             }
 
                         } catch (JSONException e) {
                             hideProgressDialog();
-                            Toast.makeText(Login_Actvity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
                             e.printStackTrace();
                         }
 
@@ -281,7 +278,7 @@ public class Login_Actvity extends AppCompatActivity {
         }
     }
 
-    public static Login_Actvity getInstance(){
+    public static LoginActivity getInstance(){
         return activity;
     }
 
@@ -320,11 +317,11 @@ public class Login_Actvity extends AppCompatActivity {
                                     sliders.add(new Slider(img_url,base_activity,cat_id));
                                 }
 
-                                myAdapter = new MyAdapter(Login_Actvity.this, sliders,null);
+                                myAdapter = new MyAdapter(LoginActivity.this, sliders,null);
                                 mPager.setAdapter(myAdapter);
 
                             }else {
-                                Toast.makeText(Login_Actvity.this, "Connection Error", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Connection Error", Toast.LENGTH_SHORT).show();
                             }
 
                         } catch (JSONException e) {
@@ -337,7 +334,7 @@ public class Login_Actvity extends AppCompatActivity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Login_Actvity.this, "Connection Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Connection Error", Toast.LENGTH_SHORT).show();
             }
         });
 

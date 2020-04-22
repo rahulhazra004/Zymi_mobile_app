@@ -11,7 +11,7 @@ import com.google.firebase.messaging.RemoteMessage;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.zymiapp.apps.Splash.Activity_Splash;
+import com.zymiapp.apps.Splash.SplashActivity;
 
 
 /**
@@ -113,7 +113,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 
                 // app is in background, show the notification in notification tray
-                Intent resultIntent = new Intent(getApplicationContext(), Activity_Splash.class);
+                Intent resultIntent = new Intent(getApplicationContext(), SplashActivity.class);
                 resultIntent.putExtra("base", base);
                 resultIntent.putExtra("cat",cat);
 
