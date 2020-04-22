@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+<ImageView
+    android:id="@+id/bgimg"
+    android:visibility="gone"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:textSize="60sp"
+        android:text="ZyMi"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:id="@+id/splash_text"
+        android:fontFamily="@font/hind_light"
+        android:scaleType="centerCrop"
+        android:textColor="@color/white"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center"
+        android:text="Enjoy the ultimate experience of online Reselling Platform"
+        android:textColor="#fff"
+        android:textSize="16sp" />
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+</LinearLayout>

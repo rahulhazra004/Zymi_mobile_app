@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#AD1457</color>
+    <color name="colorPrimaryDark">#a5044b</color>
+    <color name="colorAccent">#C31C48</color>
+    <color name="color_light">#AD1457</color>
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="prev_color">#AD1457</color>
+    <color name="tab_checked">#fff</color>
+    <color name="tab_unchecked">#223038</color>
+    <color name="tabUnselectedIconColor">#fff</color>
+    <color name="devider">#ebebeb</color>
+    <color name="text">#223038</color>
+    <color name="medium_text">#7e7e7e</color>
+    <color name="red">#AD1457</color>
+    <color name="green">#23a418</color>
+    <color name="grey_ivory5">#FFFFF0</color>
+    <color name="deliv">#4CAF50</color>
+    <color name="gray_new">#CACACA</color>
+    <color name="gray_light">#d8d8d8</color>
+    <color name="gray_lighter">#F5F2F1</color>
+    <color name="gray">#92999f</color>
+    <color name="skyblue_light">#E7EEF6</color>
+    <color name="dashbard_recyler">#FAF5ED</color>
+
+</resources>

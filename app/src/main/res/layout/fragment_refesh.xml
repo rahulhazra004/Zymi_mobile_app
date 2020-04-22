@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/simpleSwipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/scroll_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:id="@+id/cat_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:descendantFocusability="blocksDescendants"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    tools:context="com.itrifid.voaka.Fragments.Fragment_View">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ProgressBar
+                            android:id="@+id/p_bar_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="100dp"
+                            android:visibility="visible" />
+
+                        <RelativeLayout
+                            android:id="@+id/cat_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:descendantFocusability="blocksDescendants"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:id="@+id/newly_added"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="10dp"
+                                android:background="#ad1457"
+                                android:padding="4dp"
+                                android:text="Newly Added"
+                                android:textColor="@color/white"
+                                android:textSize="12sp" />
+
+
+                            <ImageView
+                                android:id="@+id/fsatisfy"
+                                android:layout_width="80dp"
+                                android:layout_height="30dp"
+                                android:layout_below="@+id/newly_added"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginRight="10dp"
+                                android:src="@drawable/fsatisfy"
+                                android:visibility="visible" />
+
+                            <LinearLayout
+                                android:id="@+id/lin_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginTop="12dp"
+                                android:layout_marginEnd="12dp"
+                                android:layout_marginRight="12dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/cat_name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/nanumgothicbold"
+                                    android:text="New Arrivals"
+                                    android:textColor="@color/text"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/cat_no"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:fontFamily="@font/hind_light"
+                                    android:text="13 Designs"
+                                    android:textSize="12sp"
+                                    tools:targetApi="jelly_bean" />
+
+                                <TextView
+                                    android:id="@+id/cat_desc"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:fontFamily="@font/nanumgothicregular"
+                                    android:text="ABC scrolling blah blah blah blah"
+                                    android:textColor="@color/black"
+                                    android:textSize="13sp" />
+
+                                <LinearLayout
+                                    android:id="@+id/rating_layout"
+                                    android:layout_width="60dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:background="@drawable/back"
+                                    android:gravity="center"
+                                    android:padding="5dp">
+
+                                    <TextView
+                                        android:id="@+id/rating"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="10"
+                                        android:textColor="@color/white"
+                                        android:textSize="14sp" />
+
+                                    <ImageView
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:layout_marginLeft="5dp"
+                                        app:srcCompat="@drawable/star_outline" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:id="@+id/lin_btn_1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp"
+                                    android:orientation="horizontal"
+                                    android:visibility="visible"
+                                    android:weightSum="2">
+
+                                    <Button
+                                        android:id="@+id/share_desc_btn"
+                                        android:layout_width="0dp"
+                                        android:layout_height="40dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/roundedge_border_red"
+                                        android:fontFamily="@font/nanumgothicbold"
+                                        android:padding="5dp"
+                                        android:text="Share Description"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="12sp" />
+
+                                    <Button
+                                        android:id="@+id/copy_desc_btn"
+                                        android:layout_width="0dp"
+                                        android:layout_height="40dp"
+                                        android:layout_marginEnd="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/roundedge_border_red"
+                                        android:fontFamily="@font/nanumgothicbold"
+                                        android:text="Copy Description"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="12sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:orientation="horizontal">
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1">
+
+                                        <RelativeLayout
+                                            android:id="@+id/select_all_btn"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="40dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_marginRight="10dp"
+                                            android:background="@drawable/roundedge_border_red"
+                                            android:text="@string/select_share"
+                                            android:textColor="@color/colorPrimary"
+                                            android:visibility="visible">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="40dp"
+                                                android:layout_marginStart="5dp"
+                                                android:layout_marginLeft="15dp"
+                                                android:layout_toLeftOf="@+id/share"
+                                                android:fontFamily="@font/nanumgothicbold"
+                                                android:gravity="center"
+                                                android:text="Select all"
+                                                android:textAllCaps="false"
+                                                android:textSize="14sp" />
+
+                                            <CheckBox
+                                                android:id="@+id/share"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentRight="true"
+                                                android:layout_margin="8dp"
+                                                android:background="@drawable/sqaure"
+                                                android:checked="false"
+                                                android:textColor="@color/black"
+                                                android:theme="@style/checkBoxStyle" />
+
+                                        </RelativeLayout>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1">
+
+                                        <Button
+                                            android:id="@+id/download_btn"
+                                            android:layout_width="0dp"
+                                            android:layout_height="40dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:layout_marginRight="10dp"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/roundedge_border_red"
+                                            android:fontFamily="@font/nanumgothicbold"
+                                            android:text="@string/select_download"
+                                            android:textAllCaps="false"
+                                            android:textSize="12sp" />
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+
+                                <!--<LinearLayout-->
+                                <!---->
+                                <!--android:id="@+id/lin_btn"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_marginTop="16dp"-->
+                                <!--android:orientation="horizontal"-->
+                                <!--android:visibility="gone">-->
+
+
+                                <!--<Button-->
+                                <!--android:id="@+id/share_facebook_btn"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="40dp"-->
+                                <!--android:layout_marginEnd="10dp"-->
+                                <!--android:layout_marginRight="10dp"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:background="#3B5998"-->
+                                <!--android:text="Share on FB"-->
+                                <!--android:textColor="@color/black"-->
+                                <!--android:textSize="10sp"-->
+                                <!--android:textStyle="bold" />-->
+
+
+                                <!--<RelativeLayout-->
+                                <!--android:id="@+id/sahre_btn"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="40dp"-->
+                                <!--android:layout_gravity="center"-->
+                                <!--android:layout_marginEnd="10dp"-->
+                                <!--android:layout_marginRight="10dp"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:background="@color/green"-->
+                                <!--android:gravity="center"-->
+                                <!--android:text="@string/select_share"-->
+                                <!--android:textColor="@color/black">-->
+
+                                <!--<TextView-->
+                                <!--android:id="@+id/text_share"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="40dp"-->
+                                <!--android:gravity="center_vertical"-->
+                                <!--android:text="share"-->
+                                <!--android:textAllCaps="true"-->
+                                <!--android:textColor="@color/white"-->
+                                <!--android:textSize="10sp"-->
+                                <!--android:textStyle="bold" />-->
+
+                                <!--<ImageView-->
+                                <!--android:id="@+id/wp"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="40dp"-->
+                                <!--android:layout_marginLeft="10dp"-->
+                                <!--android:layout_toRightOf="@+id/text_share"-->
+                                <!--app:srcCompat="@drawable/whatsapp_ic" />-->
+
+                                <!--</RelativeLayout>-->
+
+                                <!--</LinearLayout>-->
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="10dp"
+                                    android:background="@drawable/roundedge_border_red"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginTop="10dp"
+                                        android:fontFamily="@font/nanumgothicregular"
+                                        android:text="Share Our Product Over:"
+                                        android:textColor="@color/black"
+                                        android:textSize="12sp" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        android:padding="10dp">
+
+                                        <Button
+                                            android:id="@+id/share_facebook_btn"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:background="@drawable/ic_facebook" />
+
+                                        <Button
+                                            android:id="@+id/sahre_btn"
+                                            android:layout_width="50dp"
+                                            android:layout_height="50dp"
+                                            android:layout_marginStart="40dp"
+                                            android:background="@drawable/whatsapp_ic" />
+                                        <!--<RelativeLayout-->
+                                            <!--android:id="@+id/sahre_btn"-->
+                                            <!--android:layout_width="wrap_content"-->
+                                            <!--android:layout_height="wrap_content"-->
+                                            <!--android:layout_marginStart="40dp">-->
+
+                                            <!--<ImageView-->
+                                                <!--android:layout_width="50dp"-->
+                                                <!--android:layout_height="50dp"-->
+                                                <!--android:src="@drawable/whatsapp_ic" />-->
+                                        <!--</RelativeLayout>-->
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                                    android:id="@+id/adView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="15dp"
+                                    android:visibility="gone"
+                                    ads:adSize="BANNER"
+                                    ads:adUnitId="ca-app-pub-5069247112741222/9877731895" />
+
+                            </LinearLayout>
+
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/recycler_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/lin_layout"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginBottom="10dp"
+                                android:focusable="false"
+                                android:focusableInTouchMode="false"
+                                android:scrollbars="vertical" />
+
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </android.support.v4.widget.NestedScrollView>
+
+
+            <android.support.v4.widget.NestedScrollView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/scroll_view_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:id="@+id/fragment_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:descendantFocusability="blocksDescendants"
+                    android:orientation="vertical"
+                    android:visibility="visible"
+                    tools:context="kurtis.online.Fragments.Fragment_View">
+
+                    <RelativeLayout
+                        android:id="@+id/home_slider"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:background="@color/colorPrimaryDark"
+                        android:visibility="visible">
+
+                        <android.support.v4.view.ViewPager
+                            android:id="@+id/pager"
+                            android:visibility="gone"
+                            android:layout_width="fill_parent"
+                            android:layout_height="140dp"
+                            android:layout_alignParentTop="true" />
+
+                        <me.relex.circleindicator.CircleIndicator
+                            android:id="@+id/indicator"
+                            android:visibility="gone"
+                            android:layout_width="match_parent"
+                            android:layout_height="28dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="10dp"
+                            app:ci_drawable="@drawable/white_radius"
+                            app:ci_drawable_unselected="@drawable/black_radius" />
+
+                        <LinearLayout
+                            xmlns:app="http://scphemas.android.com/apk/res-auto"
+                            xmlns:tools="http://schemas.android.com/tools"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"/>
+
+                            <LinearLayout
+                                android:id="@+id/toplin1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <LinearLayout
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:gravity="center"
+                                    android:background="@drawable/aback"
+                                    android:orientation="vertical">
+                                    <de.hdodenhof.circleimageview.CircleImageView
+                                        app:civ_border_width="2dp"
+                                        app:civ_border_color="#646464"
+                                        android:id="@+id/topimg1"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        android:tint="@color/white"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/ic_menu_cart"/>
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/toptxt1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:textColor="@color/white"
+                                    android:layout_marginTop="5dp"
+                                    android:textSize="10sp"
+                                    android:gravity="center"
+                                    android:text="Kurti"/>
+
+                            </LinearLayout>
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"/>
+
+                            <LinearLayout
+                                android:id="@+id/toplin2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <LinearLayout
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:gravity="center"
+                                    android:background="@drawable/aback"
+                                    android:orientation="vertical">
+                                    <de.hdodenhof.circleimageview.CircleImageView
+                                        app:civ_border_width="2dp"
+                                        app:civ_border_color="#646464"
+                                        android:id="@+id/topimg2"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        android:tint="@color/white"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/ic_menu_cart"/>
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/toptxt2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/white"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:textSize="10sp"
+                                    android:text="Kurti"/>
+
+                            </LinearLayout>
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"/>
+
+                            <LinearLayout
+                                android:id="@+id/toplin3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <LinearLayout
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:gravity="center"
+                                    android:background="@drawable/aback"
+                                    android:orientation="vertical">
+                                    <de.hdodenhof.circleimageview.CircleImageView
+                                        app:civ_border_width="2dp"
+                                        app:civ_border_color="#646464"
+                                        android:id="@+id/topimg3"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        android:tint="@color/white"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/ic_menu_cart"/>
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/toptxt3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/white"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:textSize="10sp"
+                                    android:text="Kurti"/>
+
+                            </LinearLayout>
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"/>
+
+                            <LinearLayout
+                                android:id="@+id/toplin4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <LinearLayout
+                                    android:layout_width="60dp"
+                                    android:layout_height="60dp"
+                                    android:gravity="center"
+                                    android:background="@drawable/aback"
+                                    android:orientation="vertical">
+                                    <de.hdodenhof.circleimageview.CircleImageView
+                                        app:civ_border_width="2dp"
+                                        app:civ_border_color="#646464"
+                                        android:id="@+id/topimg4"
+                                        android:layout_width="60dp"
+                                        android:layout_height="60dp"
+                                        android:tint="@color/white"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/ic_menu_cart"/>
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/toptxt4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/white"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_gravity="center"
+                                    android:textSize="10sp"
+                                    android:gravity="center"
+                                    android:text="Kurti"/>
+
+                            </LinearLayout>
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"/>
+
+                            <LinearLayout
+                                android:id="@+id/toplin5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <LinearLayout
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginTop="5dp"
+                                    android:gravity="center"
+                                    android:background="@drawable/aback"
+                                    android:orientation="vertical">
+                                    <de.hdodenhof.circleimageview.CircleImageView
+                                        app:civ_border_width="2dp"
+                                        app:civ_border_color="#646464"
+                                        android:id="@+id/topimg5"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:tint="@color/white"
+                                        android:layout_gravity="center"
+                                        android:background="@drawable/ic_add"/>
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/toptxt5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/white"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_gravity="center"
+                                    android:textSize="10sp"
+                                    android:gravity="center"
+                                    android:text="All Category"/>
+
+                            </LinearLayout>
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"/>
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/adView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:visibility="gone"
+                        ads:adSize="BANNER"
+                        ads:adUnitId="ca-app-pub-5069247112741222/9877731895" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_bar"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="100dp" />
+
+                    <!--home recycler-->
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/r_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/home_slider"
+                        android:background="#DDDDDD"
+                        android:visibility="gone">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
+
+            </android.support.v4.widget.NestedScrollView>
+
+
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:id="@+id/scroll_view_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:descendantFocusability="blocksDescendants"
+                    android:orientation="vertical"
+                    android:visibility="visible"
+                    tools:context="kurtis.online.Fragments.Fragment_View">
+
+
+                    <!--home recycler-->
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/catlogue_rec_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/home_slider"
+                        android:background="@color/dashbard_recyler"
+                        android:paddingTop="10dp"
+                        android:visibility="visible">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
+
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/catagory_scroll_view"
+                android:background="@color/white"
+
+                android:descendantFocusability="blocksDescendants"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:context="com.zymiapp.apps.Fragments.Fragment_View">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ProgressBar
+                        android:id="@+id/p_bar_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="100dp"
+                        android:visibility="visible" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/catagory_rec_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="10dp"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:scrollbars="vertical" />
+
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+</LinearLayout>

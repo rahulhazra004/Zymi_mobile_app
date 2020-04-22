@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.zymiapp.apps">
+    <!-- Add the RECEIVE_SMS permission to enable OTP reading -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:name=".Applications.AppController"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="InnerclassSeparator">
+        <activity android:name=".Activities.SocialActivity"></activity>
+        <activity
+            android:name=".Splash.Activity_Splash"
+            android:screenOrientation="portrait"
+            tools:ignore="InnerclassSeparator">
+            <intent-filter tools:ignore="GoogleAppIndexingWarning">
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.Main_Handler_Activity"
+            android:label=""
+            android:screenOrientation="portrait"
+            tools:ignore="InnerclassSeparator" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" /> <!-- Firebase Notifications -->
+        <service android:name=".Notifications.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".Notifications.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service> <!-- ./Firebase Notifications -->
+        <activity
+            android:name=".Activities.Cat_Details"
+            android:label=""
+            android:screenOrientation="portrait"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".Activities.Write_Activity"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name=".Activities.Profile_Activity"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity
+            android:name=".Activities.Login_Actvity"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activities.Search_Activity"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activities.Diary_Full"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activities.Full_Image"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activities.Notifications_Activity" />
+        <activity android:name=".Activities.Status_Activity" />
+        <activity android:name=".Activities.Reward_Activity" />
+        <activity android:name=".Activities.Help_Activity" />
+        <activity
+            android:name=".Activities.Verification"
+            android:screenOrientation="portrait" /> <!-- Enables the Google Pay API -->
+        <meta-data
+            android:name="com.googlez.android.gms.wallet.api.enabled"
+            android:value="true" />
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_live_waekPtcPHf8YJA" />
+
+        <activity
+            android:name=".Activities.Address_Activity"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activities.My_Orders"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activities.Bank_Details"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activities.Payment_Activity_1"
+            android:label="Payment"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_Toolbar" />
+        <activity
+            android:name=".Activities.Thanks_Activity"
+            android:label="Payment"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity
+            android:name=".Activities.Product_Details"
+            android:label=""
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.Activity_Cart"
+            android:label=""
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.My_Wallet"
+            android:label=""
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.Seller_Ranckings"
+            android:label=""
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.Activity_Partner"
+            android:label=""
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activities.About_Activity" />
+        <activity android:name=".Activities.Website_Activity" />
+        <activity android:name=".Activities.Contact_Activity" />
+        <activity android:name=".Activities.Supplier_Activity" />
+        <activity
+            android:name=".Activities.Track_Order"
+            android:label="@string/title_activity_track__order"
+            android:theme="@style/AppTheme" />
+    </application>
+
+</manifest>

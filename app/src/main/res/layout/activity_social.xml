@@ -1,0 +1,81 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zymiapp.apps.Fragments.Fragment_View">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Helpline: +91 8100 50 2121"
+        android:textSize="22sp"
+        android:id="@+id/whatsapp_"
+        android:textColor="@color/text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Timing: Mon to Sat 11:00 AM to 07:00 PM"
+        android:textSize="20sp"
+        android:id="@+id/whatsapp_1"
+        android:textColor="@color/text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="140dp"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/whatsapps_"
+        android:textColor="@color/text"
+        android:layout_marginTop="134dp"
+        />
+
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="20sp"
+        android:id="@+id/whatsapp"
+        android:layout_below="@+id/whatsapps_"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email ID - info@orderx7.com"
+        android:textSize="20sp"
+        android:id="@+id/whatsapp__"
+        android:textColor="@color/text"
+        android:layout_below="@+id/whatsapp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:textColor="@color/white"
+        android:text="@string/open"
+        android:layout_height="40dp"
+        android:id="@+id/open_btn"
+        android:layout_below="@id/whatsapp__"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorPrimary"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"/>
+
+
+</RelativeLayout>

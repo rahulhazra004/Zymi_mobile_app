@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/container"
+        android:background="@drawable/gradient_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/home_slider"
+            android:layout_width="match_parent"
+            android:layout_height="180dp">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="fill_parent"
+                android:layout_height="180dp"
+                android:layout_alignParentTop="true" />
+
+            <me.relex.circleindicator.CircleIndicator
+                android:id="@+id/indicator"
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                app:ci_drawable="@drawable/white_radius"
+                app:ci_drawable_unselected="@drawable/black_radius" />
+        </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#fff"/>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginBottom="50dp"
+                    android:text="Your OTP is"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/toolbar"
+                    android:id="@+id/email"
+                    android:backgroundTint="@color/white"
+                    android:textColor="@color/white"
+                    android:hint=""
+                    android:textCursorDrawable="@drawable/color_cursor"
+                    android:textColorHighlight="@color/white"
+                    android:textColorHint="@color/white"
+                    android:inputType="number"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:visibility="gone"
+                    android:textSize="18sp"
+                    android:text="Email"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:id="@+id/email_id"
+                    android:textSize="17sp"
+                    android:visibility="gone"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/aa_round_border"
+                    android:textColor="@color/white"
+                    android:textColorHighlight="@color/white"
+                    android:hint="Enter your E-mail (Optional)"
+                    android:textColorHint="#6AADADAD"
+                    android:layout_marginBottom="30dp"
+                    android:textCursorDrawable="@color/white"
+                    android:inputType="textEmailAddress"/>
+
+
+                <Button
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Re-Send OTP"
+                    android:layout_gravity="center"
+                    android:id="@+id/resendbtn"
+                    android:background="@drawable/aa_round_border"
+                    android:textColor="@color/white"
+                    android:layout_alignParentBottom="true"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="#FFC1C1"
+                    android:layout_marginTop="25dp"
+                    android:text="We promiss to you for fast Delivery"
+                    />
+                <Button
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Next"
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="right"
+                    android:id="@+id/btn"
+                    android:background="@drawable/aa_round_border"
+                    android:textColor="@color/white"
+                    android:layout_alignParentBottom="true"/>
+
+
+
+            </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#fff"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="3"/>
+        <ImageView
+            android:id="@+id/fblink"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_facebook"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/twitterlink"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_twitter"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/instalink"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/insta"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/linkedlink"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_linkedin"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/youtubelink"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_youtube"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="3"/>
+
+    </LinearLayout>
+
+
+    </LinearLayout>
+
+
