@@ -5,15 +5,17 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:weightSum="10"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/red"
         android:orientation="vertical">
 
         <ImageView
+            android:layout_weight="5"
             android:id="@+id/profile_image"
             android:layout_width="@dimen/_180sdp"
-            android:layout_height="@dimen/_180sdp"
+            android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/_20sdp"
             android:background="@drawable/round_border_onboarding"
@@ -21,67 +23,88 @@
             android:src="@drawable/cashback" />
 
         <TextView
+            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_height="0dp"
             android:fontFamily="@font/constantia"
             android:gravity="center"
             android:text="Hello Our valueable reseller"
+            android:textColor="@color/BlueColor"
+            android:textSize="@dimen/_15sdp" />
+
+        <TextView
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/constantia"
+            android:gravity="top|center"
+            android:text="Get Cashback weekly/monthly on successful order. cashback depends upon your total Order Value"
             android:textColor="@color/white"
-            android:textSize="@dimen/_22sdp" />
+            android:textSize="@dimen/_15sdp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fontFamily="@font/constantia"
+            android:gravity="top|center"
+            android:text="Utilize your cashback on next order"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp" />
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
             android:fontFamily="@font/constantia"
             android:gravity="center"
-            android:text="Get Cashback weely/ monthly on successful order.Cashback depends upon your total order value"
+            android:text="Utilize your cashback on next order"
             android:textAlignment="gravity"
-            android:textColor="@color/white"
+            android:textColor="@color/BlueColor"
             android:textDirection="ltr"
             android:textSize="@dimen/_13sdp" />
 
 
         <TextView
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_weight="1"
             android:drawablePadding="@dimen/_5sdp"
             android:drawableLeft="@drawable/wallet"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_height="0dp"
             android:fontFamily="@font/constantia"
-            android:text="Complete more then 6 order in a week get up to FIVE %"
+            android:text="Complete more then 6 order in a week get up to 5%"
             android:gravity="start|center"
             android:textAlignment="gravity"
             android:textColor="@color/white"
             android:textDirection="ltr"
             android:textSize="@dimen/_13sdp" />
         <TextView
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
             android:drawablePadding="@dimen/_5sdp"
             android:drawableLeft="@drawable/wallet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
             android:fontFamily="@font/constantia"
             android:gravity="start|center"
-            android:text="Complete more then 15+ order in 2 week get up to TEN %"
+            android:text="Complete more then 15+ order in 2 week get up to 10%"
             android:textAlignment="gravity"
             android:textColor="@color/white"
             android:textDirection="ltr"
             android:textSize="@dimen/_13sdp" />
         <TextView
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
             android:drawableLeft="@drawable/wallet"
             android:drawablePadding="@dimen/_5sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
             android:fontFamily="@font/constantia"
             android:gravity="start|center"
-            android:text="Complete more then 30 order in a month get up to FIFTEEN %"
+            android:text="Complete more then 30 order in a month get up to 15%"
             android:textAlignment="gravity"
             android:textColor="@color/white"
             android:textDirection="ltr"

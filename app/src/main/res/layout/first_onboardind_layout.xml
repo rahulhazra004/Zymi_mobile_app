@@ -7,114 +7,118 @@
     <LinearLayout
         android:background="@color/red"
         android:orientation="vertical"
+        android:weightSum="14"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
+            android:layout_weight="4.7"
             android:padding="@dimen/_20sdp"
             android:background="@drawable/round_border_onboarding"
             android:layout_marginTop="@dimen/_20sdp"
             android:layout_gravity="center_horizontal"
             android:id="@+id/profile_image"
             android:layout_width="@dimen/_180sdp"
-            android:layout_height="@dimen/_180sdp"
+            android:layout_height="0dp"
             android:src="@drawable/zymi_convence_key" />
 
         <TextView
+            android:layout_weight="1"
             android:layout_marginTop="@dimen/_10sdp"
-            android:textSize="@dimen/_22sdp"
+            android:textSize="@dimen/_20sdp"
             android:fontFamily="@font/constantia"
             android:gravity="center"
             android:text="ZYMI CONVENIENCE KEY"
             android:textColor="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="0dp"/>
         <TextView
-            android:drawableLeft="@drawable/write_icon"
+            android:layout_weight="0.8"
+            android:drawableLeft="@drawable/right"
             android:layout_marginLeft="@dimen/_30sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:textSize="@dimen/_15sdp"
+            android:textSize="@dimen/_12sdp"
             android:drawablePadding="@dimen/_10sdp"
             android:fontFamily="@font/constantia"
-            android:gravity="start"
+            android:gravity="start|center_vertical"
             android:text="Secure payment"
             android:textColor="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="0dp"/>
 
         <TextView
-            android:drawableLeft="@drawable/write_icon"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/right"
             android:layout_marginLeft="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:textSize="@dimen/_15sdp"
+            android:textSize="@dimen/_12sdp"
             android:drawablePadding="@dimen/_10sdp"
             android:fontFamily="@font/constantia"
-            android:gravity="start"
+            android:gravity="start|center_vertical"
             android:text="Safe Privacy"
             android:textColor="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="0dp"/>
         <TextView
-            android:drawableLeft="@drawable/write_icon"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/right"
             android:layout_marginLeft="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:textSize="@dimen/_15sdp"
+            android:textSize="@dimen/_12sdp"
             android:drawablePadding="@dimen/_10sdp"
             android:fontFamily="@font/constantia"
-            android:gravity="start"
+            android:gravity="start|center_vertical"
             android:text="Secure Purchases"
             android:textColor="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="0dp"/>
         <TextView
-            android:drawableLeft="@drawable/write_icon"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/right"
             android:layout_marginLeft="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:textSize="@dimen/_15sdp"
+            android:textSize="@dimen/_12sdp"
             android:drawablePadding="@dimen/_10sdp"
             android:fontFamily="@font/constantia"
-            android:gravity="start"
+            android:gravity="start|center_vertical"
             android:text="Trusted Seller"
             android:textColor="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="0dp"/>
         <TextView
-            android:drawableLeft="@drawable/write_icon"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/right"
             android:layout_marginLeft="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:textSize="@dimen/_15sdp"
+            android:textSize="@dimen/_12sdp"
             android:drawablePadding="@dimen/_10sdp"
             android:fontFamily="@font/constantia"
-            android:gravity="start"
+            android:gravity="start|center_vertical"
             android:text="Hassle - exchange or return"
             android:textColor="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="0dp"/>
         <TextView
-            android:drawableLeft="@drawable/write_icon"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/right"
             android:layout_marginLeft="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:textSize="@dimen/_15sdp"
+            android:textSize="@dimen/_12sdp"
             android:drawablePadding="@dimen/_10sdp"
             android:fontFamily="@font/constantia"
-            android:gravity="start"
+            android:gravity="start|center_vertical"
             android:text="Fast Delivery"
             android:textColor="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="0dp"/>
 
         <TextView
-            android:drawableLeft="@drawable/write_icon"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/right"
             android:layout_marginLeft="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:textSize="@dimen/_15sdp"
+            android:textSize="@dimen/_12sdp"
             android:drawablePadding="@dimen/_10sdp"
             android:fontFamily="@font/constantia"
-            android:gravity="start"
+            android:gravity="start|center_vertical"
             android:text="Timely Margin Payment"
             android:textColor="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="0dp"/>
     </LinearLayout>
 
 </RelativeLayout>

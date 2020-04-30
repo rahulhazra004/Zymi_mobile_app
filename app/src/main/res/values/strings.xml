@@ -18,4 +18,6 @@
     <string name="ad_unit_id">ca-app-pub-5069247112741222/3791879271</string>
     <string name="ad_video_id">ca-app-pub-8846572999899891/2735485617</string>
     <string name="title_activity_track__order">Track_Order</string>
+    <string name="ok">Ok</string>
+    <string name="how_to_use_me_for_reselling_or_earning">How To Use me for Reselling or Earning</string>
 </resources>

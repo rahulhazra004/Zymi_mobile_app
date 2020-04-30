@@ -21,7 +21,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:id="@+id/splash_text"
-        android:fontFamily="@font/hind_light"
+        android:fontFamily="@font/barlin_sans_fb"
         android:scaleType="centerCrop"
         android:textColor="@color/white"
         android:layout_centerInParent="true"/>
@@ -29,9 +29,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/_10sdp"
         android:gravity="center"
-        android:text="Enjoy the ultimate experience of online Reselling Platform"
+        android:fontFamily="@font/constantia"
+        android:text="# Enjoy the ultimate experience of online Reselling Platform"
         android:textColor="#fff"
         android:textSize="16sp" />
     <View

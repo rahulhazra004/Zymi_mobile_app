@@ -23,5 +23,7 @@
     <color name="gray">#92999f</color>
     <color name="skyblue_light">#E7EEF6</color>
     <color name="dashbard_recyler">#FAF5ED</color>
+    <color name="BackgroundtWhiteColor">#FFFFFF</color>
+    <color name="BlueColor">#130C85</color>
 
 </resources>

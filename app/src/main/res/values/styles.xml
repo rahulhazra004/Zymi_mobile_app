@@ -80,5 +80,13 @@
         <item name="color">@android:color/white</item>
     </style>
 
+    <style name="loginEditTextHint" parent="TextAppearance.AppCompat">
+        <item name="colorAccent">@android:color/white</item>
+        <item name="android:textColorHint">@color/BackgroundtWhiteColor</item>
+        <item name="colorControlNormal">@color/BackgroundtWhiteColor</item>
+        <item name="colorControlActivated">@color/BackgroundtWhiteColor</item>
+        <item name="colorControlHighlight">@color/BackgroundtWhiteColor</item>
+    </style>
+
 
 </resources>

@@ -1,6 +1,5 @@
 package com.zymiapp.apps.Activities;
 
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -10,6 +9,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,6 +28,8 @@ import com.zymiapp.apps.Session.Customer_Session;
 import com.zymiapp.apps.Session.Name_Session;
 import com.zymiapp.apps.Session.Phone_Session;
 import com.zymiapp.apps.Session.Session_Manager;
+import com.zymiapp.apps.network.NetworkCheck;
+import com.zymiapp.apps.utils.DialogUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -62,10 +65,10 @@ public class LoginActivity extends AppCompatActivity {
     private MyAdapter myAdapter;
     private List<Slider> sliders = new ArrayList<>();
     private static final String IMG_URL = "https://www.resellingapp.com/apiv2/zymi/rest_server/getHomeSlider/API-KEY/123456";
-    public String wp_no="";
-    public String wp_no_b="";
-    public String wp_text="";
-    public String wp_b_text="";
+    public String wp_no = "";
+    public String wp_no_b = "";
+    public String wp_text = "";
+    public String wp_b_text = "";
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
 
@@ -80,19 +83,26 @@ public class LoginActivity extends AppCompatActivity {
 
         activity = this;
 
-        Typeface tf2 = Typeface.createFromAsset(getAssets(), "fonts/LobsterTwo_Regular.ttf");
+        //Typeface tf2 = Typeface.createFromAsset(getAssets(), "fonts/LobsterTwo_Regular.ttf");
 
         splsh_text = (TextView) findViewById(R.id.splash_text);
-        splsh_text.setTypeface(tf2);
+        // splsh_text.setTypeface(tf2);
 
+        Animation animUpDown;
 
+        // load the animation
+        animUpDown = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.up_down);
 
-        phone_session=new Phone_Session(getApplicationContext());
-        name_session=new Name_Session(getApplicationContext());
+        // start the animation
+        splsh_text.startAnimation(animUpDown);
+
+        phone_session = new Phone_Session(getApplicationContext());
+        name_session = new Name_Session(getApplicationContext());
 
         email = (EditText) findViewById(R.id.email);
         email_id = (EditText) findViewById(R.id.email_id);
-        customer_session=new Customer_Session(getApplicationContext());
+        customer_session = new Customer_Session(getApplicationContext());
         session_manager = new Session_Manager(getApplicationContext());
 
         btn = (Button) findViewById(R.id.btn);
@@ -107,10 +117,15 @@ public class LoginActivity extends AppCompatActivity {
               /*  if (email_.isEmpty() ) {
                     email.setError("Your name please");
                 }else */
-              if (password_.isEmpty()){
-                    password.setError("Mobile number mandatory");
-                    Toast.makeText(LoginActivity.this, "Mobile number mandatory", Toast.LENGTH_SHORT).show();
-                }else{
+                if (password_.isEmpty()) {
+                    new DialogUtils(activity, "Please enter your mobile number.").show();
+                } else if (password_.length() != 10) {
+                    new DialogUtils(activity, "Please enter a valid mobile number.").show();
+                } else {
+                    if (!NetworkCheck.getInstant(activity).isConnectingToInternet()) {
+                        new DialogUtils(activity, "Please check your internet connection.").show();
+                        return;
+                    }
                     showProgressDialog();
                     login();
                 }
@@ -179,24 +194,24 @@ public class LoginActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.stay, R.anim.slide_in);
     }
 
-    void login(){
+    void login() {
 
         String tag_json_obj = "json_obj_req";
 
-        Map<String,String> post_param = new HashMap<>();
-        post_param.put(KEY_NAME,email.getText().toString().trim());
-        post_param.put(KEY_PHONE,password.getText().toString().trim());
-        post_param.put(KEY_EMAIL,email_id.getText().toString().trim());
+        Map<String, String> post_param = new HashMap<>();
+        post_param.put(KEY_NAME, email.getText().toString().trim());
+        post_param.put(KEY_PHONE, password.getText().toString().trim());
+        post_param.put(KEY_EMAIL, email_id.getText().toString().trim());
 
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
-                LOGIN_URL,new JSONObject(post_param),
+                LOGIN_URL, new JSONObject(post_param),
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
 
                         try {
                             String status = response.getString("status");
-                            if (status.equals("200")){
+                            if (status.equals("200")) {
 
                                 hideProgressDialog();
                                 JSONArray jsonArray = response.getJSONArray("data");
@@ -208,22 +223,22 @@ public class LoginActivity extends AppCompatActivity {
                                 phone_session.setPhonNo(password.getText().toString().trim());
                                 name_session.setName(email.getText().toString().trim());
 
-                              if (account_status.equals("1")){
+                                if (account_status.equals("1")) {
                                     session_manager.setLogin(true);
                                     Intent intent = new Intent(getApplicationContext(), Main_Handler_Activity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     startActivity(intent);
-                                    overridePendingTransition (0, 0);
+                                    overridePendingTransition(0, 0);
                                     finish();
-                                }else {
+                                } else {
                                     session_manager.setLogin(false);
                                     Intent intent = new Intent(getApplicationContext(), Verification.class);
-                                     intent.putExtra("mobile",password.getText().toString().trim());
+                                    intent.putExtra("mobile", password.getText().toString().trim());
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     startActivity(intent);
-                                    overridePendingTransition (0, 0);
+                                    overridePendingTransition(0, 0);
                                     finish();
 //                                    Intent intent = new Intent(getApplicationContext(), Verification.class);
 //                                    intent.putExtra("mobile",password.getText().toString().trim());
@@ -233,7 +248,7 @@ public class LoginActivity extends AppCompatActivity {
 //                                    overridePendingTransition (0, 0);
                                 }
 
-                            }else {
+                            } else {
                                 hideProgressDialog();
                                 Toast.makeText(LoginActivity.this, "Connection Error", Toast.LENGTH_SHORT).show();
                             }
@@ -255,7 +270,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-// Adding request to request queue
+        // Adding request to request queue
         AppController.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
 
 
@@ -278,11 +293,11 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public static LoginActivity getInstance(){
+    public static LoginActivity getInstance() {
         return activity;
     }
 
-    void getImages(){
+    void getImages() {
 
         String tag_json_obj = "json_obj_req";
 
@@ -296,7 +311,7 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             String status = response.getString("status");
 
-                            if (status.equals("200")){
+                            if (status.equals("200")) {
                                 JSONArray jsonArray = response.getJSONArray("userData");
                                 JSONObject jsonObject1 = jsonArray.getJSONObject(0);
 
@@ -306,21 +321,20 @@ public class LoginActivity extends AppCompatActivity {
                                 wp_b_text = jsonObject1.getString("biz_whatsapp_text");
 
 
-
-                                for (int i=0;i<jsonArray.length();i++){
+                                for (int i = 0; i < jsonArray.length(); i++) {
 
                                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                                     String img_url = jsonObject.getString("img_dest");
                                     String base_activity = jsonObject.getString("base_activity");
                                     String cat_id = jsonObject.getString("cat_id");
 
-                                    sliders.add(new Slider(img_url,base_activity,cat_id));
+                                    sliders.add(new Slider(img_url, base_activity, cat_id));
                                 }
 
-                                myAdapter = new MyAdapter(LoginActivity.this, sliders,null);
+                                myAdapter = new MyAdapter(LoginActivity.this, sliders, null);
                                 mPager.setAdapter(myAdapter);
 
-                            }else {
+                            } else {
                                 Toast.makeText(LoginActivity.this, "Connection Error", Toast.LENGTH_SHORT).show();
                             }
 
