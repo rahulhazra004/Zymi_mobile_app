@@ -257,13 +257,13 @@ public class Fragment_Refresh extends Fragment {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        rootview =inflater.inflate(R.layout.fragment_refesh, container, false);
+        rootview =(View) inflater.inflate(R.layout.fragment_refesh, container, false);
 
 
                 Log.e("onCreate","hey i m oncteate");
