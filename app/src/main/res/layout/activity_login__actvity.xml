@@ -113,7 +113,7 @@
                 android:inputType="phone"
                 android:longClickable="false"
                 android:paddingLeft="10dp"
-                android:fontFamily="@font/constantia"
+                android:fontFamily="@font/mignon_regular"
                 android:shadowColor="@color/white"
                 android:textColor="@color/white"
                 android:textColorHint="#ffffff"

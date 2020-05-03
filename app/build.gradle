@@ -5,23 +5,23 @@ android {
         checkReleaseBuilds false
 
     }
-    signingConfigs {
+    /*signingConfigs {
         config {
             keyAlias 'shiv'
             keyPassword 'shivam78'
            // storeFile file('D:/compan/app/fash.jks')
             storePassword 'shivam78'
         }
-    }
+    }*/
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
     defaultConfig {
         applicationId "com.zymiapp.apps"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 9
+        versionCode 13
         multiDexEnabled = true
-        versionName "1.9"
+        versionName "2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
