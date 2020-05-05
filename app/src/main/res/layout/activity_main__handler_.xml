@@ -47,7 +47,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="30sp"
-                    android:fontFamily="@font/nanumgothicregular"
+                    android:fontFamily="@font/barlin_sans_fb"
                     android:text="ZyMi"/>
 
                 <ImageView
