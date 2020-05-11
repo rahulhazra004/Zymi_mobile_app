@@ -148,6 +148,7 @@ public class Payment_Activity_1 extends Activity {
             margin_total = Double.valueOf(product_total) + Double.valueOf(margin) + Double.valueOf(ship_cost);
 
             shiiping_text.setText("Rs" + ship_cost);
+            cod_cost = "0";
             cod_amount.setText("Rs" + cod_cost);
             total_text.setText("Rs" + margin_total);
 
@@ -227,7 +228,7 @@ public class Payment_Activity_1 extends Activity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (cod.isChecked()) {
 
-
+                    shiiping_text.setText("Rs" + ship_cost);
                     alphaView.setVisibility(View.VISIBLE);
 
 //                    Toast.makeText(Payment_Activity_1.this, "You have to pay the shipping and product charge first for COD.", Toast.LENGTH_SHORT).show();
@@ -238,13 +239,12 @@ public class Payment_Activity_1 extends Activity {
                         use.setChecked(false);
                         calcCOD();
                     } else {
-                        inv_total = inv_total + Double.parseDouble(cod_cost);
+                        inv_total = inv_total +Double.valueOf(ship_cost)+ Double.parseDouble(cod_cost);
                         total_text.setText("₹" + inv_total);
                     }
 
                 } else {
                     cod_charge_layout.setVisibility(View.GONE);
-
 
                     if (inv_total == 0 && use.isChecked()) {
                         wallet_used -= Double.valueOf(cod_cost);
@@ -282,7 +282,7 @@ public class Payment_Activity_1 extends Activity {
                             if (cod.isChecked()) {
                                 cod.setChecked(false);
                             }
-                               op.setChecked(false);
+                            op.setChecked(false);
                         }
 
                     }
@@ -355,7 +355,8 @@ public class Payment_Activity_1 extends Activity {
                         intent1.putExtra("margin", margin);
                         intent1.putExtra("invoice_total", inv_total);
                         intent1.putExtra("product_weight", product_weight);
-                        intent1.putExtra("ship_cost", ship_cost);
+//                        intent1.putExtra("ship_cost", ship_cost);
+                        intent1.putExtra("ship_cost", "0");
                         intent1.putExtra("cod_cost", cod_cost);
                         intent1.putExtra("wallet_used", wallet_used);
                         intent1.putExtra("name", name);
@@ -423,13 +424,15 @@ public class Payment_Activity_1 extends Activity {
 
     double calc() {
         cod_charge_layout.setVisibility(View.GONE);
-        inv_total = margin_total;
+        shiiping_text.setText("Rs" + "0");
+        inv_total = margin_total - Double.valueOf(ship_cost);
         total_text.setText("Rs" + inv_total);
         return inv_total;
     }
 
     double calcCOD() {
         cod_charge_layout.setVisibility(View.VISIBLE);
+        shiiping_text.setText("Rs" + ship_cost);
         inv_total = margin_total + Double.valueOf(cod_cost);
         total_text.setText("Rs" + inv_total);
         return inv_total;
