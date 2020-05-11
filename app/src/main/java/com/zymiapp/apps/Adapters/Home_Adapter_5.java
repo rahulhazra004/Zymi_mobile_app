@@ -18,6 +18,8 @@ import com.zymiapp.apps.R;
 
 import java.util.List;
 
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
+
 public class Home_Adapter_5 extends RecyclerView.Adapter<Home_Adapter_5.MyViewHolder> {
 
     private List<Home_1> home;
@@ -67,7 +69,7 @@ public class Home_Adapter_5 extends RecyclerView.Adapter<Home_Adapter_5.MyViewHo
         Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/arial.ttf");
         holder.cat_text.setTypeface(tf);
 
-        Picasso.with(mContext).load(image.getImg_url()).placeholder(R.drawable.phimg).into(holder.img);
+        Picasso.with(mContext).load(image.getImg_url()).transform(new RoundedCornersTransformation(16, 0)).placeholder(R.drawable.phimg).into(holder.img);
 
     }
 

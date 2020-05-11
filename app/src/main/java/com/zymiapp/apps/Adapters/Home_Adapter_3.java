@@ -231,7 +231,8 @@ public class Home_Adapter_3 extends  RecyclerView.Adapter<RecyclerView.ViewHolde
                 }
             });
 
-
+            if (image.getImg_url().isEmpty())
+                return;
             Picasso.with(mContext).load(image.getImg_url()).placeholder(R.drawable.phimg).fit().centerCrop().into(holder1.imageView1);
             Picasso.with(mContext).load(image.getImga()).placeholder(R.drawable.phimg).fit().centerCrop().into(holder1.imageViewb);
             Picasso.with(mContext).load(image.getImgb()).placeholder(R.drawable.phimg).fit().centerCrop().into(holder1.imageViewc);

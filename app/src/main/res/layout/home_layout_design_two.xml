@@ -105,7 +105,7 @@
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:textSize="17sp"
+                        android:textSize="@dimen/_10sdp"
                         android:textColor="@color/text"
                         android:id="@+id/cat_name"
                         android:layout_marginLeft="10dp"
@@ -124,7 +124,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:textSize="@dimen/_12sdp"
+                        android:textSize="@dimen/_10sdp"
                         android:fontFamily="@font/nanumgothicregular"
                         android:layout_weight="3"
                         android:id="@+id/startingprice"
@@ -149,8 +149,7 @@
                         android:id="@+id/shipmentprice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-
+                        android:gravity="center|right"
                         android:paddingLeft="2dp"
                         android:layout_marginTop="6dp"
                         android:layout_marginBottom="5dp"
@@ -158,7 +157,7 @@
                         android:paddingBottom="3dp"
                         android:textColor="#ED3674"
                         android:drawablePadding="8dp"
-                        android:textSize="@dimen/_11sdp"
+                        android:textSize="@dimen/_10sdp"
                         android:text="000"/>
 
                 </LinearLayout>

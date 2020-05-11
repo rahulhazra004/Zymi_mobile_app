@@ -24,6 +24,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import jp.wasabeef.picasso.transformations.CropSquareTransformation;
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 
 
 public class Home_Adapter_2 extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -38,7 +39,6 @@ public class Home_Adapter_2 extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private int visibleThreshold = 5;
     private int lastVisibleItem, totalItemCount;
     private int load_id = 0;
-
 
 
     private class LoadingViewHolder extends RecyclerView.ViewHolder {
@@ -64,7 +64,7 @@ public class Home_Adapter_2 extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
             cat_text = (TextView) view.findViewById(R.id.cat_name);
             imageView1 = (ImageView) view.findViewById(R.id.image_preview);
-            relativeLayout=(LinearLayout)view.findViewById(R.id.lin);
+            relativeLayout = (LinearLayout) view.findViewById(R.id.lin);
 
         }
     }
@@ -167,8 +167,11 @@ public class Home_Adapter_2 extends RecyclerView.Adapter<RecyclerView.ViewHolder
             });
 
 
-            Picasso.with(mContext).load(image.getImg_url())
-                    .transform(new CropSquareTransformation()).placeholder(R.drawable.phimg).into(holder1.imageView1);
+            if (image.getImg_url().isEmpty())
+                return;
+            if (!image.getImg_url().isEmpty() || image.getImg_url() != null)
+                Picasso.with(mContext).load(image.getImg_url())
+                        .transform(new RoundedCornersTransformation(16, 0)).placeholder(R.drawable.phimg).into(holder1.imageView1);
 
         } else {
             LoadingViewHolder loadingViewHolder = (LoadingViewHolder) holder;
