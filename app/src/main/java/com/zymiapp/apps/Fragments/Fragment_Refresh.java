@@ -1073,7 +1073,8 @@ public class Fragment_Refresh extends Fragment {
 
 //                                onDataloadListener.onDataLoaded(arrays);
                                 //StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(4, LinearLayoutManager.VERTICAL);
-                                GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 4);
+                                //GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 4);
+                                GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
                                 recyclerView.setLayoutManager(gridLayoutManager);
                                 recyclerView.setItemAnimator(new DefaultItemAnimator());
 
@@ -1161,6 +1162,8 @@ public class Fragment_Refresh extends Fragment {
                                 mAdapter.setOnLoadMoreListener(new Home_Adapter_2.OnLoadMoreListener() {
                                     @Override
                                     public void onLoadMore() {
+                                        if (categories!=null && categories.size()>116)
+                                            return;
                                         categories.add(null);
                                         mAdapter.notifyItemRemoved(categories.size());
                                         loadData();

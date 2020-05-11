@@ -637,7 +637,7 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         nestedScrollView1 = sv2;
         nestedScrollView2 = sv3;
         catalogue_layout= catloguye_layout;
-        fab=findViewById(R.id.fab);
+        //fab=findViewById(R.id.fab);
         fab= f;
     }
     class PagerAdapter extends FragmentPagerAdapter {
