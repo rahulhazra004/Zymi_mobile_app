@@ -157,7 +157,7 @@ public class Home_Adapter_1 extends RecyclerView.Adapter<Home_Adapter_1.MyViewHo
         Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/arial.ttf");
         holder.cat_name.setTypeface(tf);
         holder.shipmentprice.setText("shipment : "+image.getFsatisfy());
-        holder.startingprice.setText("Price Starting from : "+image.getStartingprice());
+        holder.startingprice.setText("Starting Price is: "+image.getStartingprice());
 
         Picasso.with(mContext).load(image.getImga()).placeholder(R.drawable.phimg).into(holder.image_preview);
         Picasso.with(mContext).load(image.getImgb()).placeholder(R.drawable.phimg).into(holder.image_preview_b);

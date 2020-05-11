@@ -1065,7 +1065,7 @@ public class Fragment_Home extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.w("Rabby", "2 :" + error.toString());
-                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Error due to low internet connection", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -1297,7 +1297,7 @@ public class Fragment_Home extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.w("Rabby", "2 :" + error.toString());
-                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Error due to low internet connection", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -1623,7 +1623,7 @@ public class Fragment_Home extends Fragment {
 
             getActivity().sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(String.valueOf(filePath)))));
 
-            mProgressDialog.hide();
+            mProgressDialog.dismiss();
         }
 
         @Override
@@ -1703,7 +1703,7 @@ public class Fragment_Home extends Fragment {
                                     intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                                     intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, files);
                                     startActivity(Intent.createChooser(intent, "Send these images"));
-                                    mProgressDialog.hide();
+                                    mProgressDialog.dismiss();
                                     //description="";
                                 }
                             });
@@ -2524,7 +2524,7 @@ public class Fragment_Home extends Fragment {
                             }
 
                         } catch (JSONException e) {
-                            Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Error due to low internet connection", Toast.LENGTH_SHORT).show();
                             e.printStackTrace();
                         }
 
@@ -2533,7 +2533,7 @@ public class Fragment_Home extends Fragment {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Error due to low internet connection", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -2933,7 +2933,7 @@ public class Fragment_Home extends Fragment {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Error due to low internet connection", Toast.LENGTH_SHORT).show();
             }
         });
 
