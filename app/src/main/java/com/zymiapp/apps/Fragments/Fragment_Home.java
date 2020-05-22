@@ -2278,7 +2278,17 @@ public class Fragment_Home extends Fragment {
                                 onDataloadListener.requiredDtata(id, lin_cat_details, lin_frag_home, p_bar, scroll_view_2, scroll_view_1, scroll_view_1, catlogue_layout, fab);
 
 
-                                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+                                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false){
+                                    @Override
+                                    public boolean canScrollHorizontally() {
+                                        return false;
+                                    }
+
+                                    @Override
+                                    public boolean canScrollVertically() {
+                                        return false;
+                                    }
+                                };
                                 catlogue_rec_view.setLayoutManager(mLayoutManager);
                                 catlogue_rec_view.setItemAnimator(new DefaultItemAnimator());
 
@@ -2506,6 +2516,7 @@ public class Fragment_Home extends Fragment {
                                     });
                                 } else {
                                     catlogue_rec_view.setAdapter(mAdapter_3);
+                                    scroll_view_2.setSmoothScrollingEnabled(true);
                                     mAdapter_3.setLoadId0();
                                     mAdapter_3.setOnLoadMoreListener(new Home_Adapter_3.OnLoadMoreListener() {
                                         @Override

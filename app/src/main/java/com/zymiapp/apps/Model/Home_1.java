@@ -122,6 +122,10 @@ public class Home_1 {
         this.fsatisfy = fsatisfy;
     }
 
+    public Home_1() {
+
+    }
+
 
     public String getCat_name() {
         return cat_name;

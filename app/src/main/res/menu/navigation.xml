@@ -1,31 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<item
-    android:id="@+id/navigation_home"
-    android:icon="@drawable/ic_home_black_24dp"
-    android:title="home"
-    app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="home"
+        app:showAsAction="always|withText" />
 
-<item
-    android:id="@+id/navigation_trending"
-    android:icon="@drawable/trending_up"
-    app:showAsAction="always|withText"
-    android:title="explore"/>
-
-
-<item
-    android:id="@+id/navigation_loved"
-    android:icon="@drawable/ic_share"
-    android:title="my share"
-    app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/navigation_trending"
+        android:icon="@drawable/trending_up"
+        android:title="explore"
+        app:showAsAction="always|withText" />
 
 
-<item
-    android:id="@+id/navigation_query"
-    android:icon="@drawable/ic_money"
-    android:title="share &amp; earn"
-    app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/navigation_loved"
+        android:icon="@drawable/ic_favorite"
+        android:title="my favorite"
+        app:showAsAction="always|withText" />
+
+
+    <item
+        android:id="@+id/navigation_query"
+        android:icon="@drawable/ic_money"
+        android:title="share &amp; earn"
+        app:showAsAction="always|withText" />
+
+    <item
+        android:id="@+id/navigation_favorite"
+        android:icon="@drawable/ic_share"
+        android:title="my share"
+        app:showAsAction="always|withText" />
 
 </menu>

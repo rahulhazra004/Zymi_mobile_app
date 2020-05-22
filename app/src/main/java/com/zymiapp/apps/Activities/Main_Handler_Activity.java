@@ -61,6 +61,7 @@ import com.zymiapp.apps.Fragments.Fragment_Loved;
 import com.zymiapp.apps.Fragments.Fragment_Query;
 import com.zymiapp.apps.Fragments.Fragment_Refresh;
 import com.zymiapp.apps.Fragments.Fragment_Shared;
+import com.zymiapp.apps.Fragments.More_Fragment;
 import com.zymiapp.apps.Notifications.Config;
 import com.zymiapp.apps.Notifications.NotificationUtils;
 import com.zymiapp.apps.R;
@@ -188,6 +189,8 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
 //
 //        });
 
+        /*
+
         fb = findViewById(R.id.fb_);
         fb.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -287,7 +290,7 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         });
 
 
-
+*/
 
 
 //        partner_layout.setOnClickListener(new View.OnClickListener() {
@@ -301,7 +304,7 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         FirebaseMessaging.getInstance().subscribeToTopic("global");
 
@@ -330,16 +333,16 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         phone_session=new Phone_Session(getApplicationContext());
         name_session = new Name_Session(getApplicationContext());
 
-        user_name = findViewById(R.id.user_name);
-        user_name.setText(name_session.getName());
+        //user_name = findViewById(R.id.user_name);
+        //user_name.setText(name_session.getName());
 
-        phone = findViewById(R.id.email);
-        phone.setText("+91 "+phone_session.getPhoneNO());
+        //phone = findViewById(R.id.email);
+        //phone.setText("+91 "+phone_session.getPhoneNO());
 
-        cs_id = findViewById(R.id.cs_id);
-        cs_id.setText("Customer ID - "+customer_session.getCustomerID());
+        //cs_id = findViewById(R.id.cs_id);
+        //cs_id.setText("Customer ID - "+customer_session.getCustomerID());
 
-        wallet_layout= findViewById(R.id.wallet_layout);
+       /* wallet_layout= findViewById(R.id.wallet_layout);
         wallet_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -355,7 +358,7 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
             }
         });
 
-        drawerLayout = findViewById(R.id.drawer_layout);
+       // drawerLayout = findViewById(R.id.drawer_layout);
 
         cart_layout = findViewById(R.id.cart_layout);
         cart_layout.setOnClickListener(new View.OnClickListener() {
@@ -391,7 +394,7 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
                 startActivity(new Intent(getApplicationContext(),Seller_Ranckings.class));
             }
         });
-
+*/
         setSupportActionBar(toolbar);
 
         floatingActionButton = (FloatingActionButton) findViewById(R.id.write_);
@@ -445,6 +448,13 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
                             case R.id.navigation_query:
                                 floatingActionButton.setVisibility(GONE);
                                 viewPager.setCurrentItem(3);
+                                break;
+                            case R.id.navigation_favorite:
+                                floatingActionButton.setVisibility(GONE);
+                                viewPager.setCurrentItem(4);
+
+
+
 
                               /*  if (whatsappInstalledOrNot("com.whatsapp.w4b") && whatsappInstalledOrNot("com.whatsapp")){
                                     String title = "Choose :";
@@ -525,15 +535,16 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
 
         adapter.addFragment(new Fragment_Home());
         adapter.addFragment(new Fragment_Refresh());
+        adapter.addFragment(new Fragment_Loved());
         adapter.addFragment(new Fragment_Shared());
-        adapter.addFragment(new Fragment_Query());
+        adapter.addFragment(new More_Fragment());
 
-        viewPager.setOffscreenPageLimit(4);
+        viewPager.setOffscreenPageLimit(5);
 
         //Setting adapter
         viewPager.setAdapter(adapter);
 
-        setUpNavDrawer();
+        //setUpNavDrawer();
 
         FirebaseMessaging.getInstance().subscribeToTopic(customer_session.getCustomerID());
 
@@ -556,12 +567,12 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         };
 
         //Setting the actionbarToggle to drawer layout
-        drawerLayout.setDrawerListener(actionBarDrawerToggle);
+       // drawerLayout.setDrawerListener(actionBarDrawerToggle);
 
-        actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
+        //actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
 
         //calling sync state is necessary or else your hamburger icon wont show up
-        actionBarDrawerToggle.syncState();
+//        actionBarDrawerToggle.syncState();
     }
 //
 //    void startGame(){
