@@ -39,7 +39,7 @@ public class Fragment_Query extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
+        // Inflate the layout for this fragment added
         rootview =inflater.inflate(R.layout.fragment_fragment__query, container, false);
         customer_session = new Customer_Session(getContext());
         sharebtn=rootview.findViewById(R.id.sharebtn);
