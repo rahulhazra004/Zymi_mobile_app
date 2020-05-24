@@ -18,10 +18,12 @@ public class More_Fragment extends Fragment implements View.OnClickListener {
         // Required empty public constructor
     }
 
+
     private View rootview;
-    private LinearLayout llAllSectionContainer, cart_layout, wallet_layout, my_orders_layout, partner_layout, payment_details_layout, help_layout, help_layouthelp_layout, about_layout, social_layout, ranking_layout;
+    public static LinearLayout llAllSectionContainer;
     private FrameLayout containerFragment;
     boolean isRoot = false;
+    private FragmentTransaction transaction;
 
     @Nullable
     @Override
@@ -34,7 +36,7 @@ public class More_Fragment extends Fragment implements View.OnClickListener {
 
 
     private void initView(View rootview) {
-        rootview.findViewById(R.id.llAllSectionContainer).setOnClickListener(this);
+        llAllSectionContainer= rootview.findViewById(R.id.llAllSectionContainer);
         rootview.findViewById(R.id.cart_layout).setOnClickListener(this);
         rootview.findViewById(R.id.wallet_layout).setOnClickListener(this);
         rootview.findViewById(R.id.my_orders_layout).setOnClickListener(this);
@@ -51,15 +53,21 @@ public class More_Fragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+
         switch (v.getId()){
             case R.id.cart_layout:
+                transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 llAllSectionContainer.setVisibility(View.GONE);
-                final FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.containerFragment, new Fragment_Query());
-                //transaction.addToBackStack(null);
+                transaction.addToBackStack(null);
                 transaction.commit();
                 break;
             case R.id.wallet_layout:
+                transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                llAllSectionContainer.setVisibility(View.GONE);
+                transaction.replace(R.id.containerFragment, new WalletFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
                 break;
             case R.id.my_orders_layout:
                 break;
@@ -84,6 +92,7 @@ public class More_Fragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onResume() {
+
         super.onResume();
         if(getView() == null){
             return;
@@ -104,4 +113,7 @@ public class More_Fragment extends Fragment implements View.OnClickListener {
             }
         });
     }
+
+
+
 }

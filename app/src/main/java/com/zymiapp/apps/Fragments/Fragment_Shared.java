@@ -211,6 +211,8 @@ public class Fragment_Shared extends Fragment {
     public String wp_b_text = "";
     private int load_id = 0;
     private String cat_desc = "";
+    private String cat_price = "";
+    private String cat_start_price = "";
     private String slider_url = "";
     private Home_Adapter_2 mAdapter_2;
     private Home_Adapter_3 mAdapter_3;
@@ -842,7 +844,8 @@ public class Fragment_Shared extends Fragment {
                                     tag_color_2 = jsonObject.getString("tag_color");
                                     img_url = jsonObject.getString("catalogue_image");
                                     cat_desc = jsonObject.getString("description");
-
+                                    cat_price = jsonObject.getString("shipemnt_cost");
+                                    cat_start_price = jsonObject.getString("starting_price");
 
 
                                     /*JSONObject jsonObject1 = jsonObject.getJSONObject("wa_data");
@@ -873,7 +876,7 @@ public class Fragment_Shared extends Fragment {
                                             img3 = jobj.getString("thumb_img_dest");
                                     }
 
-                                    categories.add(new Home_1(cat_name, cat_id, cat_count, tag_name, tag_name_2, tag_color, tag_color_2, cat_desc, img_url, response.getString("shipment_charge"), img1, img2, img3, response.getString("cod_charge"), imagelist));
+                                    categories.add(new Home_1(cat_name, cat_id, cat_count, tag_name, tag_name_2, tag_color, tag_color_2, cat_desc, img_url, cat_price, img1, img2, img3, cat_start_price, imagelist));
                                 }
 
                              // duplicate product remove from list and get shorted products

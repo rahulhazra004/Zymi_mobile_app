@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/bbv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f1f1f1">
+        <LinearLayout
+            android:id="@+id/btk"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp">
+            <ImageView
+                android:id="@+id/ivBacks"
+                app:srcCompat="@drawable/ic_back"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:layout_gravity="center"
+                android:id="@+id/my_wallet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Wallet"
+                android:textColor="#FFF"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+
+
+        <ProgressBar
+            android:id="@+id/p_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="visible" />
+
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/btk">
+
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/wall_lin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#f1f1f1"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/rectangle"
+                    android:orientation="vertical"
+                    tools:targetApi="lollipop">
+
+                    <TextView
+                        android:id="@+id/status_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="15dp"
+                        android:text="My Wallet Balance :"
+                        android:textColor="@color/text"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/mwb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_toRightOf="@+id/status_text"
+                        android:text="₹3000"
+                        android:textColor="#2933b7"
+                        android:textSize="18sp" />
+
+                </RelativeLayout>
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_v"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="4dp"
+                    android:background="#f1f1f1"
+                    android:visibility="gone">
+
+                </android.support.v7.widget.RecyclerView>
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

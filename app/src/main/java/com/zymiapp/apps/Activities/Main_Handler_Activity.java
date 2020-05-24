@@ -62,6 +62,7 @@ import com.zymiapp.apps.Fragments.Fragment_Query;
 import com.zymiapp.apps.Fragments.Fragment_Refresh;
 import com.zymiapp.apps.Fragments.Fragment_Shared;
 import com.zymiapp.apps.Fragments.More_Fragment;
+import com.zymiapp.apps.Fragments.WalletFragment;
 import com.zymiapp.apps.Notifications.Config;
 import com.zymiapp.apps.Notifications.NotificationUtils;
 import com.zymiapp.apps.R;
@@ -651,6 +652,9 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         //fab=findViewById(R.id.fab);
         fab= f;
     }
+
+
+
     class PagerAdapter extends FragmentPagerAdapter {
 
         private final List<Fragment> mFragments = new ArrayList<>();
