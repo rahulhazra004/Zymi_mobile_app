@@ -446,7 +446,7 @@
                             android:layout_marginStart="10dp"
                             android:layout_marginBottom="10dp"
                             android:layout_gravity="center"
-                            android:text="For COD, You have to pay the shipping and COD charges in online mode before placing order." />
+                            android:text="Make Online payment and get free shipping." />
 
 
                     </LinearLayout>
@@ -558,32 +558,35 @@
                             android:layout_marginLeft="16dp"
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/constantia"
                             android:text="After product order parcel dispacth within 48hrs to our courier partners i,e.:Delhivery,Ecom Xpress,Xpressbees,BlueDart,DTDC,India Speed Post,Fedex,Ekart,The Professional etc.
 For Choice of courier Service please Contuct us via WhatsApp or Call with your order id. "
                             android:textColor="@color/colorPrimary"
                             android:visibility="gone"
-                            android:textSize="15sp"/>
+                            android:textSize="@dimen/_12sdp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
                             android:layout_marginTop="5dp"
-                            android:layout_marginBottom="10dp"
-                            android:text="Note"
+                            android:layout_marginBottom="5dp"
+                            android:text="Note: Parcel get dispatch within 48hrs after the order is placed"
                             android:textStyle="bold"
                             android:textColor="@color/colorPrimary"
                             android:textSize="15sp"/>
 
                         <TextView
+                            android:fontFamily="@font/nanumgothicregular"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="10dp"
-                            android:text="After product order parcel dispacth within 48hrs to our courier partners i,e.:Delhivery,Ecom Xpress,Xpressbees,BlueDart,DTDC,India Speed Post,Fedex,Ekart,The Professional etc.
-For Choice of courier Service please Contuct us via WhatsApp or Call with your order id. "
-                            android:textColor="#000"
-                            android:textSize="15sp"/>
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:text="1. In Metro Area Delivery Time is: 48 hrs - 72 hrs\n2. In Urban Area Delivery Time is: 3-5 days\n3. In Rural Area Delivery Time is: 5 - 10 days \n\n Parcel Delivery or dispatched store depends on working business days/hrs\n\n For choice of courier service please write us via: email, whatsapp or call with your order id and customer id."
+                            android:textColor="#000000"
+                            android:textSize="@dimen/_10sdp"/>
 
 
                     </LinearLayout>

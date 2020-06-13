@@ -908,7 +908,7 @@ private String actualOtp="ryhbrtduuhnb";
 
                     }
 
-                }else Toast.makeText(Address_Activity.this, "Enter the otp", Toast.LENGTH_SHORT).show();
+                }else Toast.makeText(Address_Activity.this, "Verification code has been sent to the your customer mobile no. For confirm COD order", Toast.LENGTH_SHORT).show();
 
             }
         });

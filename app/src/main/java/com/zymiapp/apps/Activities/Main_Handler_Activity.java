@@ -68,6 +68,7 @@ import com.zymiapp.apps.Session.Contact_Session;
 import com.zymiapp.apps.Session.Customer_Session;
 import com.zymiapp.apps.Session.Name_Session;
 import com.zymiapp.apps.Session.Phone_Session;
+import com.zymiapp.apps.Session.Session_Manager;
 import com.zymiapp.apps.ViewPager.CustomViewPager;
 import com.google.android.gms.analytics.Tracker;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -85,9 +86,9 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 
-public class Main_Handler_Activity extends AppCompatActivity implements Fragment_Home.onDataLoadListener , Fragment_Refresh.onDataLoadListener,Fragment_Shared.onDataLoadListener {
+public class Main_Handler_Activity extends AppCompatActivity implements Fragment_Home.onDataLoadListener, Fragment_Refresh.onDataLoadListener, Fragment_Shared.onDataLoadListener {
 
-    private static final String CART_URL= "https://www.resellingapp.com/apiv2/zymi/rest_server/selectUserCart/API-KEY/123456";
+    private static final String CART_URL = "https://www.resellingapp.com/apiv2/zymi/rest_server/selectUserCart/API-KEY/123456";
     private static final String KEY_C_ID = "res_id";
     private Phone_Session phone_session;
     private Name_Session name_session;
@@ -100,28 +101,28 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
     private ImageView toolbar_title;
     public TextView fab;
     private FloatingActionButton floatingActionButton;
-//    private ListView listView;
+    //    private ListView listView;
 //    private DrawerLayout drawerLayout;
     private static final int PERMISSIONS_REQUEST_READ_CONTACTS = 100;
     private static final String TAG = Main_Handler_Activity.class.getSimpleName();
     private BroadcastReceiver mRegistrationBroadcastReceiver;
-    int id =0;
+    int id = 0;
     //Storage Permissions
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
-    int id_=0;
+    int id_ = 0;
     private ProgressBar fragment_bar;
     private LinearLayout lin_cat;
     private LinearLayout lin_frag;
     private NestedScrollView nestedScrollView;
     private NestedScrollView nestedScrollView1;
-    public String wp_no="";
-    public String wp_text="";
-    public String wp_b_no="";
-    public String wp_b_text="";
+    public String wp_no = "";
+    public String wp_text = "";
+    public String wp_b_no = "";
+    public String wp_b_text = "";
     private TextView cs_id;
     private Customer_Session customer_session;
     private Tracker tracker;
@@ -134,13 +135,14 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
     private LinearLayout payment_details_layout;
     private LinearLayout my_orders_layout;
     private DrawerLayout drawerLayout;
-    private String cart_count="";
+    private String cart_count = "";
     private LinearLayout ranking_layout;
     private LinearLayout terms_layout;
     private LinearLayout social_layout;
     private LinearLayout about_layout;
     private LinearLayout partner_layout;
     private LinearLayout website_layout;
+    private LinearLayout logout_layout;
     private LinearLayout get_own_app;
     private ImageView fb;
     private ImageView twitter;
@@ -148,7 +150,7 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
     private ImageView utube;
 
 
-//    private PublisherInterstitialAd mPublisherInterstitialAd;
+    //    private PublisherInterstitialAd mPublisherInterstitialAd;
     public static void verifyStoragePermissions(Activity activity) {
         // Check if we have write permission
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -172,7 +174,7 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         verifyStoragePermissions(this);
 
         customer_session = new Customer_Session(getApplicationContext());
-        contact_session=new Contact_Session(getApplicationContext());
+        contact_session = new Contact_Session(getApplicationContext());
 
 //        mPublisherInterstitialAd = new PublisherInterstitialAd(this);
 //        mPublisherInterstitialAd.setAdUnitId("ca-app-pub-8846572999899891/5897251835");
@@ -237,9 +239,9 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         about_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),About_Activity.class);
-                intent.putExtra("url","https://www.resellingapp.com/apiv2/zymi/about.php");
-                intent.putExtra("title","About Us");
+                Intent intent = new Intent(getApplicationContext(), About_Activity.class);
+                intent.putExtra("url", "https://www.resellingapp.com/apiv2/zymi/about.php");
+                intent.putExtra("title", "About Us");
                 startActivity(intent);
             }
         });
@@ -248,10 +250,20 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         website_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Website_Activity.class);
-                intent.putExtra("url","https://www.orderx7.com");
-                intent.putExtra("title","About Us");
+                Intent intent = new Intent(getApplicationContext(), Website_Activity.class);
+                intent.putExtra("url", "https://www.orderx7.com");
+                intent.putExtra("title", "About Us");
                 startActivity(intent);
+            }
+        });
+        findViewById(R.id.logout_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Session_Manager(getApplicationContext()).setLogin(false);
+                customer_session.setCustomerID("");
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -259,9 +271,9 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         terms_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Contact_Activity.class);
-                intent.putExtra("url","https://www.resellingapp.com/apiv2/zymi/contact.php");
-                intent.putExtra("title","Contact Us");
+                Intent intent = new Intent(getApplicationContext(), Contact_Activity.class);
+                intent.putExtra("url", "https://www.resellingapp.com/apiv2/zymi/contact.php");
+                intent.putExtra("title", "Contact Us");
                 startActivity(intent);
             }
         });
@@ -270,7 +282,7 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         social_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),SocialActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SocialActivity.class);
                 startActivity(intent);
             }
         });
@@ -279,15 +291,12 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         partner_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Supplier_Activity.class);
-                intent.putExtra("url","https://www.resellingapp.com/apiv2/zymi/contact.php");
-                intent.putExtra("title","Contact Us");
+                Intent intent = new Intent(getApplicationContext(), Supplier_Activity.class);
+                intent.putExtra("url", "https://www.resellingapp.com/apiv2/zymi/contact.php");
+                intent.putExtra("title", "Contact Us");
                 startActivity(intent);
             }
         });
-
-
-
 
 
 //        partner_layout.setOnClickListener(new View.OnClickListener() {
@@ -327,31 +336,31 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
             }
         };
 
-        phone_session=new Phone_Session(getApplicationContext());
+        phone_session = new Phone_Session(getApplicationContext());
         name_session = new Name_Session(getApplicationContext());
 
         user_name = findViewById(R.id.user_name);
         user_name.setText(name_session.getName());
 
         phone = findViewById(R.id.email);
-        phone.setText("+91 "+phone_session.getPhoneNO());
+        phone.setText("+91 " + phone_session.getPhoneNO());
 
         cs_id = findViewById(R.id.cs_id);
-        cs_id.setText("Customer ID - "+customer_session.getCustomerID());
+        cs_id.setText("Customer ID - " + customer_session.getCustomerID());
 
-        wallet_layout= findViewById(R.id.wallet_layout);
+        wallet_layout = findViewById(R.id.wallet_layout);
         wallet_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),My_Wallet.class));
+                startActivity(new Intent(getApplicationContext(), My_Wallet.class));
             }
         });
 
-        my_orders_layout= findViewById(R.id.my_orders_layout);
+        my_orders_layout = findViewById(R.id.my_orders_layout);
         my_orders_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),My_Orders.class));
+                startActivity(new Intent(getApplicationContext(), My_Orders.class));
             }
         });
 
@@ -361,7 +370,7 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         cart_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),Activity_Cart.class));
+                startActivity(new Intent(getApplicationContext(), Activity_Cart.class));
             }
         });
 
@@ -369,9 +378,9 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         help_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Help_Activity.class);
-                intent.putExtra("url","https://www.resellingapp.com/apiv2/zymi/help.php");
-                intent.putExtra("title","Help");
+                Intent intent = new Intent(getApplicationContext(), Help_Activity.class);
+                intent.putExtra("url", "https://www.resellingapp.com/apiv2/zymi/help.php");
+                intent.putExtra("title", "Help");
                 startActivity(intent);
             }
         });
@@ -380,7 +389,7 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         payment_details_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),Bank_Details.class));
+                startActivity(new Intent(getApplicationContext(), Bank_Details.class));
             }
         });
 
@@ -388,7 +397,7 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         ranking_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),Seller_Ranckings.class));
+                startActivity(new Intent(getApplicationContext(), Seller_Ranckings.class));
             }
         });
 
@@ -398,7 +407,7 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),Write_Activity.class));
+                startActivity(new Intent(getApplicationContext(), Write_Activity.class));
             }
         });
 
@@ -407,7 +416,7 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
 
         getSupportActionBar().setElevation(0);
 
-        bottom_navigation = (BottomNavigationView)findViewById(R.id.navigation);
+        bottom_navigation = (BottomNavigationView) findViewById(R.id.navigation);
         removeShiftMode(bottom_navigation);
 
         bottom_navigation.setOnNavigationItemSelectedListener(
@@ -417,15 +426,15 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
                         switch (item.getItemId()) {
 
                             case R.id.navigation_home:
-                                if (id_==0){
+                                if (id_ == 0) {
                                     //do nothing for now
-                                }else {
+                                } else {
                                     lin_cat.setVisibility(GONE);
                                     lin_frag.setVisibility(VISIBLE);
                                     fragment_bar.setVisibility(GONE);
                                     nestedScrollView.setVisibility(GONE);
                                     nestedScrollView1.setVisibility(VISIBLE);
-                                    id_ =0;
+                                    id_ = 0;
                                 }
                                 viewPager.setCurrentItem(0);
                                 floatingActionButton.setVisibility(GONE);
@@ -435,16 +444,20 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
                                 viewPager.setCurrentItem(1);
                                 floatingActionButton.setVisibility(GONE);
                                 break;
+                            case R.id.navigation_favorite:
+                                viewPager.setCurrentItem(2);
+                                floatingActionButton.setVisibility(GONE);
+                                break;
 
                             case R.id.navigation_loved:
-                                viewPager.setCurrentItem(2);
+                                viewPager.setCurrentItem(3);
                                 floatingActionButton.setVisibility(GONE);
                                 break;
 
 
                             case R.id.navigation_query:
                                 floatingActionButton.setVisibility(GONE);
-                                viewPager.setCurrentItem(3);
+                                viewPager.setCurrentItem(4);
 
                               /*  if (whatsappInstalledOrNot("com.whatsapp.w4b") && whatsappInstalledOrNot("com.whatsapp")){
                                     String title = "Choose :";
@@ -501,9 +514,7 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
             public void onPageSelected(int position) {
                 if (prevMenuItem != null) {
                     prevMenuItem.setChecked(false);
-                }
-                else
-                {
+                } else {
                     bottom_navigation.getMenu().getItem(0).setChecked(false);
                 }
 
@@ -518,28 +529,29 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         });
 
         toolbar_title = (ImageView) toolbar.findViewById(R.id.toolbar_title);
-       // toolbar_title.setTypeface(tf1);
+        // toolbar_title.setTypeface(tf1);
 
         //Add fragments
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
 
         adapter.addFragment(new Fragment_Home());
         adapter.addFragment(new Fragment_Refresh());
+        adapter.addFragment(new Fragment_Loved());
         adapter.addFragment(new Fragment_Shared());
         adapter.addFragment(new Fragment_Query());
 
-        viewPager.setOffscreenPageLimit(4);
+        viewPager.setOffscreenPageLimit(5);
 
         //Setting adapter
         viewPager.setAdapter(adapter);
 
         setUpNavDrawer();
-
+        if (!customer_session.getCustomerID().isEmpty())
         FirebaseMessaging.getInstance().subscribeToTopic(customer_session.getCustomerID());
 
     }
 
-    void setUpNavDrawer(){
+    void setUpNavDrawer() {
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
 
             @Override
@@ -613,7 +625,7 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         nestedScrollView = sv1;
         nestedScrollView1 = sv2;
         nestedScrollView2 = sv3;
-        catalogue_layout= catloguye_layout;
+        catalogue_layout = catloguye_layout;
     }
 
     @Override
@@ -628,7 +640,7 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
     }
 
     @Override
-    public void requiredDtata(int id, LinearLayout lin1, LinearLayout lin2, ProgressBar p_bar, NestedScrollView sv1, NestedScrollView sv2, NestedScrollView sv3, RelativeLayout catloguye_layout,TextView f) {
+    public void requiredDtata(int id, LinearLayout lin1, LinearLayout lin2, ProgressBar p_bar, NestedScrollView sv1, NestedScrollView sv2, NestedScrollView sv3, RelativeLayout catloguye_layout, TextView f) {
         id_ = id;
         lin_cat = lin1;
         lin_frag = lin2;
@@ -636,10 +648,11 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         nestedScrollView = sv1;
         nestedScrollView1 = sv2;
         nestedScrollView2 = sv3;
-        catalogue_layout= catloguye_layout;
+        catalogue_layout = catloguye_layout;
         //fab=findViewById(R.id.fab);
-        fab= f;
+        fab = f;
     }
+
     class PagerAdapter extends FragmentPagerAdapter {
 
         private final List<Fragment> mFragments = new ArrayList<>();
@@ -695,25 +708,24 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         String smsNumber = "918877910042";
 
 
-        if (wp_no.equals("")){
+        if (wp_no.equals("")) {
             //do nothing
-        }else {
+        } else {
             smsNumber = wp_no;
         }
 
-        String message = "Hi,\n" +":";
-        if (wp_text.equals("")){
+        String message = "Hi,\n" + ":";
+        if (wp_text.equals("")) {
             //do nithung
-        }else {
+        } else {
             message = wp_text;
         }
-
 
 
         boolean isWhatsappInstalled = whatsappInstalledOrNot("com.whatsapp");
         if (isWhatsappInstalled) {
 
-            try{
+            try {
 
                 Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
                 whatsappIntent.setType("text/plain");
@@ -721,7 +733,7 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
                 whatsappIntent.putExtra(Intent.EXTRA_TEXT, message);
                 whatsappIntent.putExtra("jid", smsNumber + "@s.whatsapp.net"); //phone number without "+" prefix
                 startActivity(whatsappIntent);
-            }catch (ActivityNotFoundException e){
+            } catch (ActivityNotFoundException e) {
                 e.printStackTrace();
             }
 
@@ -732,7 +744,7 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
                 Toast.makeText(getApplicationContext(), "WhatsApp not Installed",
                         Toast.LENGTH_SHORT).show();
                 startActivity(goToMarket);
-            }catch (NullPointerException e){
+            } catch (NullPointerException e) {
                 e.printStackTrace();
             }
         }
@@ -743,27 +755,27 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         String smsNumber = "918877910042";
 
 
-        if (wp_b_no.equals("")){
+        if (wp_b_no.equals("")) {
             //do nothing
-        }else {
+        } else {
             smsNumber = wp_b_no;
         }
 
-        String message = "Hi,\n" +":";
-        if (wp_b_text.equals("")){
+        String message = "Hi,\n" + ":";
+        if (wp_b_text.equals("")) {
             //do nithung
-        }else {
+        } else {
             message = wp_b_text;
         }
 
-        try{
+        try {
             Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
             whatsappIntent.setType("text/plain");
             whatsappIntent.setPackage("com.whatsapp.w4b");
             whatsappIntent.putExtra(Intent.EXTRA_TEXT, message);
             whatsappIntent.putExtra("jid", smsNumber + "@s.whatsapp.net"); //phone number without "+" prefix
             startActivity(whatsappIntent);
-        }catch (ActivityNotFoundException e){
+        } catch (ActivityNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -791,89 +803,90 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         }
     }
 
-        @Override
+    @Override
     public void onBackPressed() {
-            if (viewPager.getCurrentItem()!=0){
-                if (id_==0){
-                    viewPager.setCurrentItem(0);
-                }else if(id_==1){
-                    lin_cat.setVisibility(GONE);
-                    lin_frag.setVisibility(GONE);
-                    fragment_bar.setVisibility(GONE);
-                    nestedScrollView.setVisibility(GONE);
-                    nestedScrollView1.setVisibility(GONE);
-                    try {
-                        catalogue_layout.setVisibility(VISIBLE);
-                        nestedScrollView2.setVisibility(VISIBLE);
-                    }catch (Exception e){}
-                    id_ =2;
-                }else if (id_==2) {
-                    lin_cat.setVisibility(GONE);
-                    lin_frag.setVisibility(VISIBLE);
-                    fragment_bar.setVisibility(GONE);
-                    nestedScrollView.setVisibility(GONE);
-                    nestedScrollView1.setVisibility(VISIBLE);
-                    try {
-                        //catalogue_layout.setVisibility(VISIBLE);
-                        //nestedScrollView2.setVisibility(VISIBLE);
-                    }catch (Exception e){}
-                    id_ = 0;
-                }else if (id_==7) {
-                    lin_cat.setVisibility(GONE);
-                    lin_frag.setVisibility(VISIBLE);
-                    fragment_bar.setVisibility(GONE);
-                    nestedScrollView.setVisibility(GONE);
-                    nestedScrollView1.setVisibility(VISIBLE);
-                    try {
-                        //catalogue_layout.setVisibility(VISIBLE);
-                        //nestedScrollView2.setVisibility(VISIBLE);
-                    }catch (Exception e){}
-                    id_ = 0;
+        if (viewPager.getCurrentItem() != 0) {
+            if (id_ == 0) {
+                viewPager.setCurrentItem(0);
+            } else if (id_ == 1) {
+                lin_cat.setVisibility(GONE);
+                lin_frag.setVisibility(GONE);
+                fragment_bar.setVisibility(GONE);
+                nestedScrollView.setVisibility(GONE);
+                nestedScrollView1.setVisibility(GONE);
+                try {
+                    catalogue_layout.setVisibility(VISIBLE);
+                    nestedScrollView2.setVisibility(VISIBLE);
+                } catch (Exception e) {
                 }
-                else if (id_==8) {
-                    lin_cat.setVisibility(GONE);
-                    lin_frag.setVisibility(VISIBLE);
-                    fragment_bar.setVisibility(GONE);
-                    nestedScrollView.setVisibility(GONE);
-                    nestedScrollView1.setVisibility(VISIBLE);
-                    try {
-                       // catalogue_layout.setVisibility(VISIBLE);
-                        //nestedScrollView2.setVisibility(VISIBLE);
-                    }catch (Exception e){}
-                    id_ = 0;
+                id_ = 2;
+            } else if (id_ == 2) {
+                lin_cat.setVisibility(GONE);
+                lin_frag.setVisibility(VISIBLE);
+                fragment_bar.setVisibility(GONE);
+                nestedScrollView.setVisibility(GONE);
+                nestedScrollView1.setVisibility(VISIBLE);
+                try {
+                    //catalogue_layout.setVisibility(VISIBLE);
+                    //nestedScrollView2.setVisibility(VISIBLE);
+                } catch (Exception e) {
                 }
-                else if (id_==9) {
-                    viewPager.setCurrentItem(1);
-                    id_ = 0;
+                id_ = 0;
+            } else if (id_ == 7) {
+                lin_cat.setVisibility(GONE);
+                lin_frag.setVisibility(VISIBLE);
+                fragment_bar.setVisibility(GONE);
+                nestedScrollView.setVisibility(GONE);
+                nestedScrollView1.setVisibility(VISIBLE);
+                try {
+                    //catalogue_layout.setVisibility(VISIBLE);
+                    //nestedScrollView2.setVisibility(VISIBLE);
+                } catch (Exception e) {
                 }
-                else if (id_==10) {
-                    lin_cat.setVisibility(GONE);
-                    lin_frag.setVisibility(VISIBLE);
-                    fragment_bar.setVisibility(GONE);
-                    nestedScrollView.setVisibility(GONE);
-                    nestedScrollView1.setVisibility(VISIBLE);
-                    id_ = 9;
+                id_ = 0;
+            } else if (id_ == 8) {
+                lin_cat.setVisibility(GONE);
+                lin_frag.setVisibility(VISIBLE);
+                fragment_bar.setVisibility(GONE);
+                nestedScrollView.setVisibility(GONE);
+                nestedScrollView1.setVisibility(VISIBLE);
+                try {
+                    // catalogue_layout.setVisibility(VISIBLE);
+                    //nestedScrollView2.setVisibility(VISIBLE);
+                } catch (Exception e) {
                 }
-            }else {
-                if (id_==0){
-                    finish();
-                }else {
-                    if(id_==7)
-                    {
-                        lin_cat.setVisibility(GONE);
-                        nestedScrollView1.setVisibility(VISIBLE);
-
-                    }else {
-                        lin_cat.setVisibility(GONE);
-                        lin_frag.setVisibility(VISIBLE);
-                        fragment_bar.setVisibility(GONE);
-                        nestedScrollView.setVisibility(GONE);
-                        nestedScrollView1.setVisibility(VISIBLE);
-                    }
-                    fab.setVisibility(VISIBLE);
-                    id_ =0;
-                }
+                id_ = 0;
+            } else if (id_ == 9) {
+                viewPager.setCurrentItem(1);
+                id_ = 0;
+            } else if (id_ == 10) {
+                lin_cat.setVisibility(GONE);
+                lin_frag.setVisibility(VISIBLE);
+                fragment_bar.setVisibility(GONE);
+                nestedScrollView.setVisibility(GONE);
+                nestedScrollView1.setVisibility(VISIBLE);
+                id_ = 9;
             }
+        } else {
+            if (id_ == 0) {
+                finish();
+            } else {
+                if (id_ == 7) {
+                    lin_cat.setVisibility(GONE);
+                    nestedScrollView1.setVisibility(VISIBLE);
+
+                } else {
+                    lin_cat.setVisibility(GONE);
+                    lin_frag.setVisibility(VISIBLE);
+                    fragment_bar.setVisibility(GONE);
+                    nestedScrollView.setVisibility(GONE);
+                    nestedScrollView1.setVisibility(VISIBLE);
+                }
+                if(fab!=null)
+                fab.setVisibility(VISIBLE);
+                id_ = 0;
+            }
+        }
 
 
     }
@@ -883,21 +896,21 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-              finish();
-              return true;
+                finish();
+                return true;
 
             case R.id.cart:
-                startActivity(new Intent(getApplicationContext(),Activity_Cart.class));
+                startActivity(new Intent(getApplicationContext(), Activity_Cart.class));
                 return true;
 
             case R.id.search:
-                Intent intent = new Intent(getApplicationContext(),Search_Activity.class);
-                intent.putExtra("pNo","");
+                Intent intent = new Intent(getApplicationContext(), Search_Activity.class);
+                intent.putExtra("pNo", "");
                 startActivity(intent);
                 return true;
 
-             default:
-                 return super.onOptionsItemSelected(item);
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
     }
@@ -922,7 +935,7 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
 //        //Setting the actionbarToggle to drawer layout
 //        drawerLayout.setDrawerListener(actionBarDrawerToggle);
 
-        //calling sync state is necessary or else your hamburger icon wont show up
+    //calling sync state is necessary or else your hamburger icon wont show up
 //        actionBarDrawerToggle.syncState();
 //    }
 
@@ -932,7 +945,6 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
 //        mRewardedVideoAd.destroy(this);
         super.onDestroy();
     }
-
 
 
     private void addContact(String name, String phone) {
@@ -999,18 +1011,18 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         icon.setDrawableByLayerId(R.id.ic_badge, badge);
     }
 
-    public static  CustomViewPager getV(){
+    public static CustomViewPager getV() {
         return viewPager;
     }
 
 
-    private void getCartProducts(){
+    private void getCartProducts() {
 
         // Tag used to cancel the request
         String tag_json_obj = "json_obj_req";
 
-        Map<String, String> postParam= new HashMap<>();
-        postParam.put(KEY_C_ID,customer_session.getCustomerID());
+        Map<String, String> postParam = new HashMap<>();
+        postParam.put(KEY_C_ID, customer_session.getCustomerID());
 
 
         final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
@@ -1019,16 +1031,16 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
                     @Override
                     public void onResponse(JSONObject response) {
 
-                        try{
+                        try {
                             String status = response.getString("status");
-                            if (status.equals("200")){
+                            if (status.equals("200")) {
                                 cart_count = String.valueOf(response.getInt("cart_count"));
-                            }else {
-                                cart_count="0";
+                            } else {
+                                cart_count = "0";
                             }
                             invalidateOptionsMenu();
 
-                        }catch (JSONException e){
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
@@ -1053,7 +1065,6 @@ public class Main_Handler_Activity extends AppCompatActivity implements Fragment
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
     }
-
 
 
 }

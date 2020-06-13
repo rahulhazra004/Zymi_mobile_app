@@ -229,7 +229,7 @@ public class Payment_Activity_1 extends Activity {
                 if (cod.isChecked()) {
 
                     shiiping_text.setText("Rs" + ship_cost);
-                    alphaView.setVisibility(View.VISIBLE);
+                    //alphaView.setVisibility(View.VISIBLE);
 
 //                    Toast.makeText(Payment_Activity_1.this, "You have to pay the shipping and product charge first for COD.", Toast.LENGTH_SHORT).show();
                     cod_charge_layout.setVisibility(View.VISIBLE);

@@ -204,6 +204,7 @@
                             android:layout_below="@+id/newly_added"
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="8dp"
+                            android:layout_marginBottom="@dimen/_4sdp"
                             android:layout_marginRight="10dp"
                             android:src="@drawable/fsatisfy"
                             android:visibility="visible" />
@@ -220,6 +221,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:visibility="gone"
                                 android:id="@+id/cat_name"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -229,6 +231,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:visibility="gone"
                                 android:id="@+id/cat_no"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -247,6 +250,7 @@
                                 android:textStyle="bold" />
 
                             <LinearLayout
+                                android:visibility="gone"
                                 android:id="@+id/rating_layout"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -275,34 +279,38 @@
                                 android:id="@+id/lin_btn_1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="16dp"
+                                android:layout_marginTop="@dimen/_23sdp"
                                 android:orientation="horizontal"
                                 android:visibility="visible">
 
                                 <Button
+                                    android:drawableLeft="@drawable/ic_sharing"
                                     android:id="@+id/share_desc_btn"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
                                     android:layout_marginEnd="10dp"
                                     android:layout_marginRight="10dp"
                                     android:layout_weight="1"
-                                    android:background="@color/colorPrimaryDark"
+                                    android:fontFamily="@font/constantia"
+                                    android:background="@drawable/product_details_upper_button"
                                     android:text="Share Pic &amp; Description"
                                     android:textColor="@color/white"
-                                    android:textSize="10sp"
+                                    android:textSize="@dimen/_6sdp"
                                     android:textStyle="bold" />
 
                                 <Button
+                                    android:drawableStart="@drawable/ic_copy_images"
                                     android:id="@+id/copy_desc_btn"
                                     android:layout_width="0dp"
                                     android:layout_height="40dp"
                                     android:layout_marginEnd="10dp"
                                     android:layout_marginRight="10dp"
                                     android:layout_weight="1"
-                                    android:background="@color/colorPrimaryDark"
+                                    android:fontFamily="@font/constantia"
+                                    android:background="@drawable/product_details_upper_button"
                                     android:text="Copy Description"
                                     android:textColor="@color/white"
-                                    android:textSize="10sp"
+                                    android:textSize="@dimen/_6sdp"
                                     android:textStyle="bold" />
 
 
@@ -314,22 +322,22 @@
                                     android:layout_marginEnd="10dp"
                                     android:layout_marginRight="10dp"
                                     android:layout_weight="1"
-                                    android:background="@color/colorPrimaryDark"
-                                    android:text="@string/select_share"
+                                    android:background="@drawable/product_details_upper_button"
                                     android:textColor="@color/white"
                                     android:visibility="visible">
 
                                     <TextView
+                                        android:layout_centerVertical="true"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="40dp"
+                                        android:layout_height="wrap_content"
                                         android:layout_marginStart="5dp"
-                                        android:layout_marginLeft="15dp"
                                         android:layout_toLeftOf="@+id/share"
                                         android:gravity="center"
-                                        android:text="select all Pic"
                                         android:textAllCaps="true"
+                                        android:fontFamily="@font/constantia"
+                                        android:text="select all Pic"
                                         android:textColor="@color/white"
-                                        android:textSize="10sp"
+                                        android:textSize="@dimen/_6sdp"
                                         android:textStyle="bold" />
 
                                     <CheckBox
@@ -338,7 +346,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_alignParentRight="true"
                                         android:layout_margin="8dp"
-                                        android:background="@drawable/sqaure"
+                                        android:background="@color/white"
                                         android:checked="false"
                                         android:textColor="@color/white"
                                         android:theme="@style/checkBoxStyle" />
@@ -357,30 +365,33 @@
                                 android:visibility="visible">
 
                                 <Button
+                                    android:drawableStart="@drawable/facebook_share"
+                                    android:fontFamily="@font/constantia"
                                     android:id="@+id/share_facebook_btn"
                                     android:layout_width="0dp"
                                     android:layout_height="40dp"
                                     android:layout_marginEnd="10dp"
                                     android:layout_marginRight="10dp"
                                     android:layout_weight="1"
-                                    android:background="#3B5998"
+                                    android:background="@drawable/facebook_button_background_style"
                                     android:text="Share on Facebook"
                                     android:textColor="@color/white"
-                                    android:textSize="10sp"
+                                    android:textSize="@dimen/_6sdp"
                                     android:textStyle="bold" />
 
 
                                 <Button
+                                    android:drawableStart="@drawable/ic_file_download"
                                     android:id="@+id/download_btn"
                                     android:layout_width="0dp"
                                     android:layout_height="40dp"
                                     android:layout_marginEnd="10dp"
                                     android:layout_marginRight="10dp"
                                     android:layout_weight="1"
-                                    android:background="@color/colorPrimaryDark"
+                                    android:background="@drawable/product_details_upper_button"
                                     android:text="Download All Pic"
                                     android:textColor="@color/white"
-                                    android:textSize="10sp"
+                                    android:textSize="@dimen/_6sdp"
                                     android:textStyle="bold" />
 
                                 <RelativeLayout
@@ -391,21 +402,28 @@
                                     android:layout_marginEnd="10dp"
                                     android:layout_marginRight="10dp"
                                     android:layout_weight="1"
-                                    android:background="@color/green"
+                                    android:background="@drawable/aa_black_bg"
                                     android:gravity="center"
                                     android:text="@string/select_share"
                                     android:textColor="@color/white">
 
-                                    <TextView
+
+
+                                    <Button
+                                        android:background="@null"
+                                        android:drawableStart="@drawable/whats_share"
                                         android:id="@+id/text_share"
+                                        android:drawablePadding="@dimen/_2sdp"
                                         android:layout_width="wrap_content"
                                         android:layout_height="40dp"
                                         android:gravity="center"
                                         android:text="Share on Whatsapp"
-                                        android:paddingLeft="10dp"
+                                        android:paddingLeft="@dimen/_2sdp"
+                                        android:paddingRight="@dimen/_2sdp"
                                         android:textAllCaps="true"
+                                        android:fontFamily="@font/constantia"
                                         android:textColor="@color/white"
-                                        android:textSize="10sp"
+                                        android:textSize="@dimen/_6sdp"
                                         android:textStyle="bold" />
 
 

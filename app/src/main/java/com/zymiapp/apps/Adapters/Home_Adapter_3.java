@@ -211,10 +211,10 @@ public class Home_Adapter_3 extends  RecyclerView.Adapter<RecyclerView.ViewHolde
             holder1.ratingtxt.setText((4+new Random().nextFloat())+"");
 
             if (image.getCat_count().equals("43")){
-                holder1.cat_no.setVisibility(View.GONE);
-                holder1.cat_no.setText(image.getCat_count()+" Designs");
+                //holder1.cat_no.setVisibility(View.GONE);
+               // holder1.cat_no.setText(image.getCat_count()+" Designs");
             }else {
-                holder1.cat_no.setText(image.getCat_count()+" Designs");
+                //holder1.cat_no.setText(image.getCat_count()+" Designs");
             }
             holder1.cat_desc.setText(image.getCat_desc());
 

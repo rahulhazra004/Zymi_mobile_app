@@ -14,6 +14,7 @@ import android.media.MediaScannerConnection;
 import com.zymiapp.apps.Activities.Cat_Details;
 import com.zymiapp.apps.Activities.Full_Image;
 import com.zymiapp.apps.Activities.Main_Handler_Activity;
+import com.zymiapp.apps.Adapters.Diary_Adapter;
 import com.zymiapp.apps.Adapters.Fav_Adapter;
 import com.zymiapp.apps.Applications.AppController;
 import com.zymiapp.apps.Model.Fav;
@@ -211,28 +212,40 @@ public class Fragment_Loved extends Fragment {
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
 
-//        recyclerView.addOnItemTouchListener(new Diary_Adapter.RecyclerTouchListener(getActivity(), recyclerView, new Diary_Adapter.ClickListener() {
-//            @Override
-//            public void onClick(View view, int position) {
-//
-//                for (int i=0;i<favs.size();i++){
-//                    Selection selection = new Selection(favs.get(i).getImg_url(),favs.get(i).getSelect(),"",favs.get(i).getSelling_price(),favs.get(i).getActual_price(),favs.get(i).getCat_name(),true);
-//                    images.add(selection);
-//                }
-//
+        recyclerView.addOnItemTouchListener(new Diary_Adapter.RecyclerTouchListener(getActivity(), recyclerView, new Diary_Adapter.ClickListener() {
+            @Override
+            public void onFavClick(View v, int pos, View v2) {
+
+            }
+
+            @Override
+            public void onClick(View view, int position) {
+
+                for (int i=0;i<favs.size();i++){
+                    Selection selection = new Selection(favs.get(i).getImg_url(),favs.get(i).getSelect(),favs.get(i).getImg_id(),favs.get(i).getSelling_price(),favs.get(i).getActual_price(),favs.get(i).getImage_name(),"",true);
+                    //Selection selection = new Selection(favs.get(i).getImg_url(),favs.get(i).getSelect(),"",favs.get(i).getSelling_price(),favs.get(i).getActual_price(),favs.get(i).getCat_name(),true);
+                    images.add(selection);
+                }
+               // mAdapter.notifyDataSetChanged();
+
 //                Intent intent = new Intent(getActivity(),Full_Image.class);
 //                Bundle data = new Bundle();
 //                data.putSerializable("images", (Serializable) images);
 //                intent.putExtra("ca",data);
 //                intent.putExtra("pos",position);
 //                startActivity(intent);
-//            }
-//
-//            @Override
-//            public void onLongClick(View view, int position) {
-//
-//            }
-//        }));
+            }
+
+            @Override
+            public void onImgClick(View view, int position) {
+
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
 
         p_bar = (ProgressBar) rootView.findViewById(R.id.p_bar);
 
@@ -525,7 +538,7 @@ public class Fragment_Loved extends Fragment {
 
             getActivity().sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(String.valueOf(filePath)))));
 
-            mProgressDialog.hide();
+            mProgressDialog.dismiss();
         }
 
         @Override
@@ -741,7 +754,7 @@ public class Fragment_Loved extends Fragment {
 
     private void hideProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.hide();
+            mProgressDialog.dismiss();
         }
     }
 

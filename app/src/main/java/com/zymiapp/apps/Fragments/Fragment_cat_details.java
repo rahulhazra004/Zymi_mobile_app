@@ -611,6 +611,11 @@ public class Fragment_cat_details extends Fragment {
                                     public void onLongClick(View view, int position) {
 
                                     }
+
+                                    @Override
+                                    public void onBuyClick(Selection selection) {
+
+                                    }
                                 });
 
                                 StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);

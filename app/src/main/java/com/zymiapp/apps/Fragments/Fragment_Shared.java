@@ -90,6 +90,8 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -130,6 +132,7 @@ public class Fragment_Shared extends Fragment {
     private MyAdapter myAdapter;
     private static ViewPager mPager;
     private List<Home_1> categories=new ArrayList<>();
+    private List<Home_1> filterCategories=new ArrayList<>();
     private List<Home_1> categoriestop=new ArrayList<>();
     private Home_Adapter_1 mAdapter;
     private String cat_name;
@@ -203,6 +206,8 @@ public class Fragment_Shared extends Fragment {
     public String wp_b_text="";
     private int load_id = 0;
     private String cat_desc="";
+    private String shiping_cost="";
+    private String cod_charge="";
     private String slider_url="";
     private Home_Adapter_2 mAdapter_2;
     private Home_Adapter_3 mAdapter_3;
@@ -817,6 +822,9 @@ public class Fragment_Shared extends Fragment {
                                 if(jsonArray.length()==0) {
                                     empty_layout.setVisibility(VISIBLE);
                                     p_bar.setVisibility(GONE);
+                                }else {
+                                    empty_layout.setVisibility(GONE);
+                                    p_bar.setVisibility(GONE);
                                 }
 
                                 for(int i=0;i<jsonArray.length();i++){
@@ -837,6 +845,9 @@ public class Fragment_Shared extends Fragment {
                                     tag_color_2 = jsonObject.getString("tag_color");
                                     img_url=jsonObject.getString("catalogue_image");
                                     cat_desc=jsonObject.getString("description");
+                                    shiping_cost=jsonObject.getString("shipemnt_cost");
+                                    cod_charge=jsonObject.getString("starting_price");
+
 
 
 
@@ -868,12 +879,30 @@ public class Fragment_Shared extends Fragment {
                                             img3=jobj.getString("thumb_img_dest");
                                     }
 
-                                    categories.add(new Home_1(cat_name,cat_id,cat_count,tag_name,tag_name_2,tag_color,tag_color_2,cat_desc,img_url,response.getString("shipment_charge"),img1,img2,img3,response.getString("cod_charge"),imagelist));
+                                    categories.add(new Home_1(cat_name,cat_id,cat_count,tag_name,tag_name_2,tag_color,tag_color_2,cat_desc,img_url,shiping_cost,img1,img2,img3,cod_charge,imagelist));
                                 }
+
+                                // duplicate product remove from list and get shorted products
+                                Collections.sort(categories, new Comparator<Home_1>() {
+                                    @Override
+                                    public int compare(Home_1 o1, Home_1 o2) {
+                                        return o1.getCat_no().compareTo(o2.getCat_no());
+                                    }
+                                });
+
+                                filterCategories.clear();
+                                filterCategories.add(categories.get(0));
+                                for (int products=0; products<categories.size();++products){
+                                    if (products!=0 && !categories.get(products).getCat_no().equals(categories.get(products-1).getCat_no())){
+                                        filterCategories.add(categories.get(products));
+                                    }
+                                }
+                                /* all removing duplicate product and share list to the home_adapter_1 which is list products showing */
+
 
 //                                onDataloadListener.onDataLoaded(arrays);
 
-                                mAdapter = new Home_Adapter_1(scroll_view_1,getActivity(), categories, new Home_Adapter_1.ClickListener() {
+                                mAdapter = new Home_Adapter_1(scroll_view_1,getActivity(), filterCategories, new Home_Adapter_1.ClickListener() {
                                     @Override
                                     public void onClick(View view, int position) {
                                         onAdapterItemClick(position);
@@ -994,7 +1023,7 @@ public class Fragment_Shared extends Fragment {
                                 recyclerView.setVisibility(View.VISIBLE);
                                 rl.setVisibility(GONE);
                                 //img.setVisibility(View.VISIBLE);
-
+                                if(getActivity()!=null)
                                recyclerView.setBackgroundColor(getResources().getColor(R.color.black));
                                 getImages();
 

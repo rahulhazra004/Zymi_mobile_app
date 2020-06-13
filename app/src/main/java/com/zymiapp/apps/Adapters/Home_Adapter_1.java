@@ -38,7 +38,7 @@ public class Home_Adapter_1 extends RecyclerView.Adapter<Home_Adapter_1.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView cat_name,shipmentprice,startingprice,count;
+        TextView cat_name,shipmentprice,startingprice,count, tvOffer;
         ImageView image_preview,image_preview_b,image_preview_c;
         LinearLayout lin_layout,downloadbtn,sharebtn;
         ImageView whatsappshare,facebookShare;
@@ -46,6 +46,7 @@ public class Home_Adapter_1 extends RecyclerView.Adapter<Home_Adapter_1.MyViewHo
 
         public MyViewHolder(final View view) {
             super(view);
+            tvOffer=(TextView) view.findViewById(R.id.tvOffer);
             cat_name=(TextView) view.findViewById(R.id.cat_name);
             count=(TextView) view.findViewById(R.id.count);
             cardview=(CardView) view.findViewById(R.id.cardview);
@@ -150,13 +151,21 @@ public class Home_Adapter_1 extends RecyclerView.Adapter<Home_Adapter_1.MyViewHo
     public void onBindViewHolder(MyViewHolder holder, final int position) {
 
         Home_1 image = home.get(position);
+        double shipprice=Double.valueOf(image.getFsatisfy());
+        /*if (shipprice>100.0){
+            shipprice=shipprice-100;
+        }*/
 
+        holder.tvOffer.setText("Get up to 60% off.");
+        //holder.tvOffer.setText("Get up to "+shipprice+"% off. Limited period offer");
+        holder.tvOffer.setSelected(true);
         holder.cat_name.setText(image.getCat_name());
         holder.count.setText("+"+image.getCat_count()+"\n Design");
 
         Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/arial.ttf");
         holder.cat_name.setTypeface(tf);
         holder.shipmentprice.setText("shipment : "+image.getFsatisfy());
+       // holder.startingprice.setText("Starting Price is: "+image.getStartingprice());
         holder.startingprice.setText("Starting Price is: "+image.getStartingprice());
 
         Picasso.with(mContext).load(image.getImga()).placeholder(R.drawable.phimg).into(holder.image_preview);

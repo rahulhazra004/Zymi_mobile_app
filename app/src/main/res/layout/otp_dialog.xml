@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPostalAddress"
             android:maxLength="7"
-            android:hint="enter the otp" />
+            android:hint="enter the verification code" />
 
     </android.support.design.widget.TextInputLayout>
 

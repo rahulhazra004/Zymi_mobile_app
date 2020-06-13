@@ -34,6 +34,7 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
+                        android:visibility="gone"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_margin="8dp"
@@ -47,6 +48,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:layout_marginLeft="@dimen/_3sdp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -58,11 +60,13 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:gravity="center"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textSize="16sp"
+                                android:textSize="@dimen/_12sdp"
                                 android:textColor="#FF0000"
                                 android:id="@+id/cat_name"
+                                android:fontFamily="@font/constantia"
                                 android:layout_marginBottom="5dp"
                                 android:textStyle="bold"
                                 android:text="Top Selling"/>
@@ -93,12 +97,14 @@
                                 android:paddingRight="5dp"
                                 android:paddingLeft="5dp"
                                 android:paddingTop="3dp"
+                                android:fontFamily="@font/nanumgothicregular"
                                 android:paddingBottom="3dp"
-                                android:textColor="#FFC107"
+                                android:textColor="@color/white"
                                 android:drawablePadding="8dp"
-                                android:textSize="11sp"
-                                android:text="discounted shipping"/>
+                                android:textSize="@dimen/_8sdp"
+                                android:text=" Make online payment and get upto 10% cashback "/>
                             <TextView
+                                android:visibility="gone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingRight="5dp"
@@ -107,15 +113,17 @@
                                 android:paddingBottom="3dp"
                                 android:textColor="#FFFFFF"
                                 android:drawablePadding="8dp"
-                                android:textSize="11sp"
+                                android:textSize="@dimen/_8sdp"
                                 android:text=":"/>
                             <TextView
+                                android:visibility="gone"
                                 android:id="@+id/ship"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingRight="5dp"
                                 android:paddingLeft="5dp"
                                 android:paddingTop="3dp"
+                                android:fontFamily="@font/nanumgothicregular"
                                 android:paddingBottom="3dp"
                                 android:textColor="#FFFFFF"
                                 android:drawablePadding="8dp"
@@ -127,13 +135,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="This karva chauat lets celebrate her love with your beloved children ."
-                            android:textSize="14sp"
+                            android:textSize="@dimen/_8sdp"
                             android:layout_marginTop="4dp"
+                            android:fontFamily="@font/nanumgothicregular"
                             android:layout_marginRight="70dp"
                             android:inputType="textMultiLine"
                             android:gravity="center|left"
                             android:id="@+id/cat_desc"
-                            android:textColor="#747474"
+                            android:textColor="@color/black"
                             />
 
                         <LinearLayout
@@ -142,6 +151,7 @@
                             android:layout_marginBottom="5dp"
                             android:orientation="horizontal">
                             <TextView
+                                android:visibility="gone"
                                 android:id="@+id/price"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -152,9 +162,10 @@
                                 android:textColor="#FF5722"
                                 />
                             <TextView
+                                android:fontFamily="@font/constantia"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="onwards"
+                                android:text="Make online payment and get free shipping."
                                 android:textSize="14sp"
                                 android:id="@+id/cat_no"
                                 android:gravity="left|bottom"
@@ -225,12 +236,13 @@
                             android:background="@drawable/ic_down_arrow_in_a_circle"
                             android:layout_gravity="center"/>
                         <TextView
+                            android:fontFamily="@font/nanumgothicregular"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="6dp"
-                            android:textSize="16sp"
-                            android:textColor="#555"
+                            android:textSize="@dimen/_6sdp"
+                            android:textColor="@color/black"
                             android:text="Download"
                             />
                     </LinearLayout>
@@ -245,25 +257,26 @@
                         android:layout_gravity="center"
                         android:orientation="vertical">
                         <ImageView
+                            android:background="@drawable/share_round_outline"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:background="@drawable/ic_share"
+                            android:src="@drawable/ic_file_share"
                             android:layout_gravity="center"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="6dp"
-                            android:textSize="16sp"
+                            android:textSize="@dimen/_6sdp"
                             android:textColor="#555"
                             android:text="Others"
                             />
                     </LinearLayout>
 
-                    <View
+                    <!--<View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1"/>-->
 
                     <LinearLayout
                         android:id="@+id/whatsappshare"
@@ -274,23 +287,22 @@
                         android:layout_margin="10dp"
                         android:layout_gravity="center"
                         android:clickable="true"
-                        android:background="@drawable/round_border_whtas"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
                         <ImageView
                             android:layout_width="28dp"
                             android:layout_height="28dp"
-                            android:layout_margin="8dp"
+                            android:layout_margin="4dp"
                             android:background="@drawable/ic_whatsapp"/>
                         <TextView
+                            android:fontFamily="@font/nanumgothicregular"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="16sp"
-                            android:layout_margin="8dp"
-                            android:textStyle="bold"
-                            android:textColor="#fff"
+                            android:textSize="@dimen/_6sdp"
+                            android:textColor="@color/black"
                             android:gravity="center"
+                            android:layout_marginBottom="@dimen/_2sdp"
                             android:layout_gravity="center"
-                            android:text="SHARE NOW"/>
+                            android:text="Share Now"/>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -337,13 +349,11 @@
                             android:layout_height="160dp"
                             android:id="@+id/image_preview_b"
                             android:layout_marginBottom="3dp"
-                            android:layout_marginRight="8dp"
                             android:layout_marginTop="0dp"/>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_weight="1"
-                            android:layout_marginRight="8dp"
                             android:layout_marginTop="3dp"
                             android:layout_height="160dp">
                             <ImageView

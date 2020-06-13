@@ -19,9 +19,9 @@ android {
         applicationId "com.zymiapp.apps"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 13
+        versionCode 14
         multiDexEnabled = true
-        versionName "2.0"
+        versionName "2.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }

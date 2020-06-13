@@ -88,14 +88,14 @@ public class SocialActivity extends AppCompatActivity {
         wp_b_no = ( SocialActivity.this).wp_b_no;
         wp_b_text = ( SocialActivity.this).wp_b_text;
 
-        String smsNumber = "918877910042";
+        String smsNumber = "918100502121";
         if (wp_no.equals("")){
             //do nothing
         }else {
             smsNumber = wp_no;
         }
 
-        String message = "Hi,\n" +":";
+        String message = "Hi,\n need help. Please reply ASAP" +":";
         if (wp_text.equals("")){
             //do nithung
         }else {
@@ -139,14 +139,14 @@ public class SocialActivity extends AppCompatActivity {
         wp_b_no = (SocialActivity.this).wp_b_no;
         wp_b_text = (SocialActivity.this).wp_b_text;
 
-        String smsNumber = "918877910042";
+        String smsNumber = "918100502121";
         if (wp_b_no.equals("")){
             //do nothing
         }else {
             smsNumber = wp_b_no;
         }
 
-        String message = "Hi";
+        String message = "Hi,\n need help. Please reply ASAP";
         if (!wp_b_text.equals("")){
             message = wp_b_text;
         }

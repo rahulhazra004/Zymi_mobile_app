@@ -4,6 +4,7 @@ package com.zymiapp.apps.Activities;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
@@ -14,7 +15,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import com.zymiapp.apps.Adapters.Cat_Image_Adapter;
+import com.zymiapp.apps.Adapters.Cat_New_Adapter;
 import com.zymiapp.apps.Applications.AppController;
+import com.zymiapp.apps.Fragments.Fragment_Home;
 import com.zymiapp.apps.Model.Selection;
 import com.zymiapp.apps.R;
 import com.zymiapp.apps.Session.Customer_Session;
@@ -32,12 +35,16 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -65,6 +72,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.zymiapp.apps.Fragments.Fragment_Home.KEY_ACTUAL_PRICE;
+import static com.zymiapp.apps.Fragments.Fragment_Home.KEY_CATLOG_ID;
+import static com.zymiapp.apps.Fragments.Fragment_Home.KEY_COD_AVAILABLE;
+import static com.zymiapp.apps.Fragments.Fragment_Home.KEY_IMG_URL;
+import static com.zymiapp.apps.Fragments.Fragment_Home.KEY_PRODUCT_ID;
+import static com.zymiapp.apps.Fragments.Fragment_Home.KEY_PRODUCT_NAME;
+import static com.zymiapp.apps.Fragments.Fragment_Home.KEY_PRODUCT_SIZE;
+import static com.zymiapp.apps.Fragments.Fragment_Home.KEY_PRODUCT_WEIGHT;
+import static com.zymiapp.apps.Fragments.Fragment_Home.KEY_QTY;
+import static com.zymiapp.apps.Fragments.Fragment_Home.KEY_RES_ID;
+import static com.zymiapp.apps.Fragments.Fragment_Home.KEY_SELLING_PRICE;
+
 
 public class Cat_Details extends AppCompatActivity {
 
@@ -83,6 +102,7 @@ public class Cat_Details extends AppCompatActivity {
     private TextView cat_text;
     private TextView catno;
     private TextView catdesc;
+    private EditText edit_margin;
     private ProgressDialog mProgressDialog;
     private Button btn_download;
     private RelativeLayout btn_share;
@@ -91,6 +111,14 @@ public class Cat_Details extends AppCompatActivity {
     private ArrayList<Uri> files;
     private int position;
     private Cat_Image_Adapter mAdapter;
+    private Selection selectedsingle;
+    private int pos;
+    private Cat_New_Adapter size_adapter;
+    private RecyclerView size_rec, qty_list;
+    private Cat_New_Adapter qty_adapter;
+    private Dialog bottom_dialog;
+    private List<String> qty = new ArrayList<>();
+    private String ciid = "";
     //Storage Permissions
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -174,6 +202,55 @@ public class Cat_Details extends AppCompatActivity {
             }
         });
 
+
+        bottom_dialog = new Dialog(this, R.style.BottomDialog);
+        bottom_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        bottom_dialog.getWindow().getAttributes().windowAnimations = R.style.CustomDialogAnimation;
+        layoutParams.copyFrom(bottom_dialog.getWindow().getAttributes());
+        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+        layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT;
+        layoutParams.gravity = Gravity.BOTTOM;
+        bottom_dialog.getWindow().setAttributes(layoutParams);
+        bottom_dialog.setCancelable(true);
+        bottom_dialog.setContentView(R.layout.quantity_dialog_two);
+        size_rec = bottom_dialog.findViewById(R.id.r_view);
+        qty_list = bottom_dialog.findViewById(R.id.r_view_1);
+        edit_margin = (EditText) bottom_dialog.findViewById(R.id.input_margin);
+        LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        qty_list.setLayoutManager(horizontalLayoutManager);
+        qty_list.setItemAnimator(new DefaultItemAnimator());
+
+        qty.add("1");
+        qty.add("2");
+        qty.add("3");
+        qty.add("4");
+        qty.add("5");
+        qty.add("6");
+        qty.add("7");
+        qty.add("8");
+        qty.add("9");
+        qty.add("10");
+        qty_adapter = new Cat_New_Adapter(this, qty);
+        qty_list.setAdapter(qty_adapter);
+
+        //btn = bottom_dialog.findViewById(R.id.btn);
+        bottom_dialog.findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (qty_adapter.getSelectedPosition() != -1 && size_adapter.getSelectedPosition() != -1) {
+                    if (!edit_margin.getText().toString().trim().equals("")) {
+                        bottom_dialog.dismiss();
+                        //showProgressDialog();
+                        addToCart(selectedsingle, ciid);
+                    } else
+                        Toast.makeText(getApplicationContext(), "Please add margin", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Please select the size and quantity", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        //size_rec = bottom_dialog.findViewById(R.id.r_view);
         btn_download = (Button) findViewById(R.id.download_btn);
         btn_download.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -339,7 +416,7 @@ public class Cat_Details extends AppCompatActivity {
             }
 
             if(i==images.size()-1){
-                mProgressDialog.hide();
+                mProgressDialog.dismiss();
                 Toast.makeText(getApplicationContext(), "Images Downloaded Successfully", Toast.LENGTH_SHORT).show();
             }
 
@@ -347,6 +424,59 @@ public class Cat_Details extends AppCompatActivity {
     }
 
 
+    private void addToCart(Selection item, String catlog_id) {
+
+        String tag_json_obj = "json_obj_req";
+
+        Map<String, String> postParam = new HashMap<>();
+        postParam.put(KEY_PRODUCT_ID, item.getImg_id());
+        postParam.put(KEY_PRODUCT_NAME, item.getImage_name());
+        postParam.put(KEY_QTY, qty.get(qty_adapter.getSelectedPosition()));
+        postParam.put(KEY_SELLING_PRICE, item.getPrice());
+        postParam.put(KEY_ACTUAL_PRICE, item.getActual_price());
+        postParam.put(KEY_IMG_URL, item.getImg_url());
+        postParam.put(KEY_PRODUCT_WEIGHT, item.getWeight());
+        postParam.put(KEY_CATLOG_ID, catlog_id);
+        postParam.put(KEY_RES_ID, customer_session.getCustomerID());
+        postParam.put(KEY_COD_AVAILABLE, item.getCod_avail());
+        postParam.put(KEY_PRODUCT_SIZE, item.getSize_avail().get(size_adapter.getSelectedPosition()));
+
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
+                Fragment_Home.CART_URL, new JSONObject(postParam),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        //hideProgressDialog();
+                        try {
+                            String status = response.getString("status");
+
+                            if (status.equals("202")) {
+                                Toast.makeText(getApplicationContext(), "Item Added to Cart", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), Activity_Cart.class).putExtra("margin", edit_margin.getText().toString().trim()));
+                                //getCartProducts();
+                            } else if (status.equals("208")) {
+                                Toast.makeText(getApplicationContext(), "Connection Error", Toast.LENGTH_SHORT).show();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //hideProgressDialog();
+                Toast.makeText(getApplicationContext(), "Connection Error", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+// Adding request to request queue
+        AppController.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
+
+    }
 
 
     private void scanFile(String path) {
@@ -414,7 +544,7 @@ public class Cat_Details extends AppCompatActivity {
 
             sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(String.valueOf(filePath)))));
 
-            mProgressDialog.hide();
+            //mProgressDialog.hide();
         }
 
         @Override
@@ -489,7 +619,7 @@ public class Cat_Details extends AppCompatActivity {
                                     intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                                     intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, files);
                                     startActivity(Intent.createChooser(intent, "Send these images"));
-                                    mProgressDialog.hide();
+                                    //mProgressDialog.hide();
                                 }
                             });
 
@@ -689,9 +819,16 @@ public class Cat_Details extends AppCompatActivity {
                                     public void onLongClick(View view, int position) {
 
                                     }
+
+                                    @Override
+                                    public void onBuyClick(Selection selection) {
+                                        selectedsingle = selection;
+                                        //ciid = categories.get(pos).getCat_no();
+                                        showSIzeAndQtyDiaog(selection);
+                                    }
                                 });
 
-                                StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
+                                StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(1, LinearLayoutManager.VERTICAL);
                                 r_view_1.setLayoutManager(staggeredGridLayoutManager);
                                 r_view_1.setItemAnimator(new DefaultItemAnimator());
                                 r_view_1.setAdapter(mAdapter);
@@ -726,6 +863,18 @@ public class Cat_Details extends AppCompatActivity {
 // Adding request to request queue
         AppController.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
 
+    }
+
+    void showSIzeAndQtyDiaog(Selection item) {
+
+        LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        size_rec.setLayoutManager(horizontalLayoutManager);
+        size_rec.setItemAnimator(new DefaultItemAnimator());
+
+        size_adapter = new Cat_New_Adapter(getApplicationContext(), item.getSize_avail());
+        size_rec.setAdapter(size_adapter);
+
+        bottom_dialog.show();
     }
 
     private void addToFav(final ImageView v, String img_id, final TextView t) {
@@ -785,7 +934,7 @@ public class Cat_Details extends AppCompatActivity {
 
     private void hideProgressDialog() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.hide();
+            mProgressDialog.dismiss();
         }
     }
 

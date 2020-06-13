@@ -148,8 +148,8 @@ public class Fragment_Home extends Fragment {
     private String img_url;
     private ProgressBar p_bar;
     //private static final String DATA_URL = "https://www.resellingapp.com/apiv2/zymi/rest_server/homecontent/API-KEY/123456";
-    private static final String DATA_URL = "https://www.resellingapp.com/apiv2/zymi/index.php/rest_server/firstContentNew/API-KEY/123456";
-    private static final String IMG_URL = "https://www.resellingapp.com/apiv2/zymi/rest_server/getHomeSlider/API-KEY/123456";
+    public static final String DATA_URL = "https://www.resellingapp.com/apiv2/zymi/index.php/rest_server/firstContentNew/API-KEY/123456";
+    public static final String IMG_URL = "https://www.resellingapp.com/apiv2/zymi/rest_server/getHomeSlider/API-KEY/123456";
     private LinearLayout lin_cat_details;
     private LinearLayout lin_frag_home;
     private RelativeLayout cat_layout;
@@ -215,7 +215,7 @@ public class Fragment_Home extends Fragment {
     private String slider_url = "";
     private Home_Adapter_2 mAdapter_2;
     private Home_Adapter_3 mAdapter_3;
-    private static final String DATA_CATLOGUE_URL = "https://www.resellingapp.com/apiv2/zymi/rest_server/catCatalogueContent/API-KEY/123456";
+    public static final String DATA_CATLOGUE_URL = "https://www.resellingapp.com/apiv2/zymi/rest_server/catCatalogueContent/API-KEY/123456";
     //private List<Home_1> categories=new ArrayList<>();
     private List<String> sizes_avail = new ArrayList<>();
     private CircleImageView topimg1, topimg2, topimg3, topimg4;
@@ -228,18 +228,18 @@ public class Fragment_Home extends Fragment {
     private Cat_New_Adapter size_adapter;
     private Cat_New_Adapter qty_adapter;
     private Button btn;
-    private static final String CART_URL = "https://www.resellingapp.com/apiv2/zymi/rest_server/userCart/API-KEY/123456";
-    private static final String KEY_PRODUCT_ID = "product_id";
-    private static final String KEY_PRODUCT_NAME = "product_name";
-    private static final String KEY_ACTUAL_PRICE = "actual_price";
-    private static final String KEY_SELLING_PRICE = "selling_price";
-    private static final String KEY_IMG_URL = "product_image";
-    private static final String KEY_PRODUCT_WEIGHT = "product_weight";
-    private static final String KEY_CATLOG_ID = "catalog_id";
-    private static final String KEY_RES_ID = "res_id";
-    private static final String KEY_COD_AVAILABLE = "is_cod_available";
-    private static final String KEY_QTY = "qty";
-    private static final String KEY_PRODUCT_SIZE = "product_size";
+    public static final String CART_URL = "https://www.resellingapp.com/apiv2/zymi/rest_server/userCart/API-KEY/123456";
+    public static final String KEY_PRODUCT_ID = "product_id";
+    public static final String KEY_PRODUCT_NAME = "product_name";
+    public static final String KEY_ACTUAL_PRICE = "actual_price";
+    public static final String KEY_SELLING_PRICE = "selling_price";
+    public static final String KEY_IMG_URL = "product_image";
+    public static final String KEY_PRODUCT_WEIGHT = "product_weight";
+    public static final String KEY_CATLOG_ID = "catalog_id";
+    public static final String KEY_RES_ID = "res_id";
+    public static final String KEY_COD_AVAILABLE = "is_cod_available";
+    public static final String KEY_QTY = "qty";
+    public static final String KEY_PRODUCT_SIZE = "product_size";
     private Selection selectedsingle;
     private String ciid = "";
     private EditText edit_margin;
@@ -1025,20 +1025,24 @@ public class Fragment_Home extends Fragment {
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                                     if (i == 0) {
+                                        if(getContext()!=null){
                                         Picasso.with(getContext()).load(jsonObject.getString("category_image")).placeholder(R.drawable.phimg).into(topimg1);
-                                        toptxt1.setText(jsonObject.getString("category_name"));
+                                        toptxt1.setText(jsonObject.getString("category_name"));}
                                     }
                                     if (i == 1) {
+                                        if(getContext()!=null){
                                         Picasso.with(getContext()).load(jsonObject.getString("category_image")).placeholder(R.drawable.phimg).into(topimg2);
-                                        toptxt2.setText(jsonObject.getString("category_name"));
+                                        toptxt2.setText(jsonObject.getString("category_name"));}
                                     }
                                     if (i == 2) {
+                                        if(getContext()!=null){
                                         Picasso.with(getContext()).load(jsonObject.getString("category_image")).placeholder(R.drawable.phimg).into(topimg3);
-                                        toptxt3.setText(jsonObject.getString("category_name"));
+                                        toptxt3.setText(jsonObject.getString("category_name"));}
                                     }
                                     if (i == 3) {
+                                        if(getContext()!=null){
                                         Picasso.with(getContext()).load(jsonObject.getString("category_image")).placeholder(R.drawable.phimg).into(topimg4);
-                                        toptxt4.setText(jsonObject.getString("category_name"));
+                                        toptxt4.setText(jsonObject.getString("category_name"));}
                                     }
 
                                     cat_name = jsonObject.getString("category_name");
@@ -1138,10 +1142,12 @@ public class Fragment_Home extends Fragment {
 
                                     JSONObject jsonObject2 = jsonObject.getJSONObject("front_image");
                                     if (onDataloadListener != null) {
-                                        onDataloadListener = null;
-                                        onAttach(getActivity());
+                                        //onDataloadListener = null;
+                                        //onAttach(getActivity());
+                                        onDataloadListener.onSliderLoaded(wp_no, wp_text, wp_no_b, wp_b_text);
+
                                     }
-                                    onDataloadListener.onSliderLoaded(wp_no, wp_text, wp_no_b, wp_b_text);
+
 
                                     JSONArray imageArray = jsonObject2.getJSONArray("images");
                                     ArrayList<String> imagelist = new ArrayList<>();
@@ -1268,6 +1274,7 @@ public class Fragment_Home extends Fragment {
                                         // getData();
                                     }
                                 });
+                                if (getActivity()!=null)
                                 Picasso.with(getActivity()).load(slider_url).placeholder(R.drawable.phimg).into(img);
 
                                 StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(1, LinearLayoutManager.VERTICAL);
@@ -1280,6 +1287,7 @@ public class Fragment_Home extends Fragment {
                                 rl.setVisibility(GONE);
                                 //img.setVisibility(View.VISIBLE);
 
+                                if(getActivity()!=null)
                                 recyclerView.setBackgroundColor(getResources().getColor(R.color.black));
                                 getImages();
 
@@ -1443,10 +1451,10 @@ public class Fragment_Home extends Fragment {
                                 wp_text = jsonObject1.getString("gen_whatsapp_text");
                                 wp_b_text = jsonObject1.getString("biz_whatsapp_text");
                                 if (onDataloadListener != null) {
-                                    onDataloadListener = null;
-                                    onAttach(getActivity());
+                                    //onDataloadListener = null;
+                                    //onAttach(getActivity());
+                                    onDataloadListener.onSliderLoaded(wp_no, wp_text, wp_no_b, wp_b_text);
                                 }
-                                onDataloadListener.onSliderLoaded(wp_no, wp_text, wp_no_b, wp_b_text);
 
                                 for (int i = 0; i < jsonArray.length(); i++) {
 
@@ -1817,6 +1825,7 @@ public class Fragment_Home extends Fragment {
                                 }
 
                                 String ava_cat_ra = response.getString("ava_cata_rate");
+                                //rating.setVisibility(GONE);
                                 rating.setText(ava_cat_ra);
 
                                 if (categories.get(pos).getFsatisfy().equals("1")) {
@@ -2379,8 +2388,11 @@ public class Fragment_Home extends Fragment {
                                         scroll_view_2.setVisibility(GONE);
                                         scroll_view_1.setVisibility(View.GONE);
                                         fab.setVisibility(GONE);
+                                        cat_text.setVisibility(GONE);
                                         cat_text.setText(categories.get(pos).getCat_name());
+                                        catdesc.setVisibility(GONE);
                                         catdesc.setText(categories.get(pos).getCat_desc());
+                                        tag_name_text.setVisibility(GONE);
                                         tag_name_text.setText("#" + categories.get(pos).getTag_name());
 //                                        tag_name_2_text.setText("#"+categories.get(pos).getTag_name_2());
                                         if (categories.get(pos).getTag_name().equals("Default") || categories.get(pos).getTag_name().equals("") || categories.get(pos).getTag_name().equals("default")) {

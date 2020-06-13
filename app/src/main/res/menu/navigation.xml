@@ -5,17 +5,22 @@ xmlns:android="http://schemas.android.com/apk/res/android">
 <item
     android:id="@+id/navigation_home"
     android:icon="@drawable/ic_home_black_24dp"
-    android:title="home"
+    android:title="Home"
     app:showAsAction="always|withText" />
 
 <item
     android:id="@+id/navigation_trending"
     android:icon="@drawable/trending_up"
     app:showAsAction="always|withText"
-    android:title="explore"/>
+    android:title="Trendy"/>
+    <item
+        android:id="@+id/navigation_favorite"
+        android:icon="@drawable/ic_favorite"
+        android:title="Favorite"
+        app:showAsAction="always|withText" />
 
 
-<item
+    <item
     android:id="@+id/navigation_loved"
     android:icon="@drawable/ic_share"
     android:title="my share"
@@ -25,7 +30,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
 <item
     android:id="@+id/navigation_query"
     android:icon="@drawable/ic_money"
-    android:title="share &amp; earn"
+    android:title="Refer &amp; earn"
     app:showAsAction="always|withText" />
 
 </menu>

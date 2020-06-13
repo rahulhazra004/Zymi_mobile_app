@@ -41,7 +41,7 @@ public class Cat_Image_Adapter extends RecyclerView.Adapter<Cat_Image_Adapter.My
         private CheckBox imageView;
         private TextView count_all;
         private ImageView fsatisfy;
-        private TextView rate_count;
+        private TextView rate_count, buy_now;
         private TextView sharebtn;
 
         public MyViewHolder(View view) {
@@ -49,6 +49,7 @@ public class Cat_Image_Adapter extends RecyclerView.Adapter<Cat_Image_Adapter.My
 
             cat_image = (ImageView) view.findViewById(R.id.thumbnail);
             imageView = (CheckBox) view.findViewById(R.id.tick);
+            buy_now = (TextView) view.findViewById(R.id.buy_now);
 
             cat_image.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -63,6 +64,12 @@ public class Cat_Image_Adapter extends RecyclerView.Adapter<Cat_Image_Adapter.My
 
             count_all = (TextView) view.findViewById(R.id.count_all);
             sharebtn = (TextView) view.findViewById(R.id.mbtn);
+            buy_now.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onBuyClick(images.get(getAdapterPosition()));
+                }
+            });
 
             fav.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -199,6 +206,7 @@ public class Cat_Image_Adapter extends RecyclerView.Adapter<Cat_Image_Adapter.My
         void onClick(View view, int position);
         void onImgClick(View view,int position);
         void onLongClick(View view, int position);
+        void onBuyClick(Selection selection);
     }
 
     public static class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {

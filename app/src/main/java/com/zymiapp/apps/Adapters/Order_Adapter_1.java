@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zymiapp.apps.Activities.My_Orders;
 import com.zymiapp.apps.Activities.Track_Order;
 import com.zymiapp.apps.Model.Main_Order;
 import com.zymiapp.apps.R;
@@ -26,6 +27,7 @@ public class Order_Adapter_1 extends  RecyclerView.Adapter<RecyclerView.ViewHold
 
     private List<Main_Order> main_orders;
     private Context mContext;
+    private My_Orders Morder;
     private ClickListener listener;
     private final int VIEW_TYPE_ITEM = 0;
     private final int VIEW_TYPE_LOADING = 1;
@@ -71,8 +73,9 @@ public class Order_Adapter_1 extends  RecyclerView.Adapter<RecyclerView.ViewHold
 
 
 
-    public Order_Adapter_1(RecyclerView recyclerView, Context mContext, List<Main_Order> home,ClickListener listener) {
+    public Order_Adapter_1(RecyclerView recyclerView, My_Orders my_orders, Context mContext, List<Main_Order> home, ClickListener listener) {
         this.mContext = mContext;
+        this.Morder=my_orders;
         this.main_orders = home;
 
 
@@ -145,10 +148,10 @@ public class Order_Adapter_1 extends  RecyclerView.Adapter<RecyclerView.ViewHold
                     bundle.putString("urlString", url);
                     bundle.putString("urlTitle", "Track Order");
 
-                    Intent intent = new Intent(mContext,Track_Order.class);
+                    Intent intent = new Intent(Morder,Track_Order.class);
                     intent.putExtras(bundle);
 
-                    mContext.startActivity(intent);
+                    Morder.startActivity(intent);
                 }
             });
 

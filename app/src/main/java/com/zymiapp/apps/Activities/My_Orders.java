@@ -67,13 +67,14 @@ public class My_Orders extends AppCompatActivity {
     private List<Main_Order> main_orders = new ArrayList<>();
     private int cancel_main_pos = 0;
     Toolbar toolbar;
+    My_Orders mOrder;
 
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_orders);
-
+        mOrder=this;
         customer_session = new Customer_Session(getApplicationContext());
         recyclerView = (RecyclerView) findViewById(R.id.r_view);
         p_bar = (ProgressBar) findViewById(R.id.p_bar);
@@ -233,7 +234,7 @@ public class My_Orders extends AppCompatActivity {
                                 recyclerView.setLayoutManager(mLayoutManager);
                                 recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-                                mAdapter = new Order_Adapter_1(recyclerView, getApplicationContext(), main_orders, new Order_Adapter_1.ClickListener() {
+                                mAdapter = new Order_Adapter_1(recyclerView,mOrder,  getApplicationContext(), main_orders, new Order_Adapter_1.ClickListener() {
                                     @Override
                                     public void onClick(View view, int position) {
 
